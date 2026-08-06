@@ -1,0 +1,22 @@
+﻿# Data processing
+numpy
+pandas
+
+# Machine learning
+scikit-learn
+joblib
+
+# Visualisation
+matplotlib
+
+# Dataset access
+ucimlrepo
+
+# Notebook development
+jupyter
+
+# Dashboard
+streamlit
+
+# Testing
+pytest
