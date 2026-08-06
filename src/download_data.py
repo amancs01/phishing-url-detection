@@ -1,22 +1,16 @@
 ﻿"""Download the PhiUSIIL dataset from the UCI repository."""
 
-from pathlib import Path
-
 import pandas as pd
 from ucimlrepo import fetch_ucirepo
 
-
-DATASET_ID = 967
-OUTPUT_DIRECTORY = Path("data/raw")
-OUTPUT_FILE = OUTPUT_DIRECTORY / "phiusil_raw.csv"
-
+from src.config import RAW_DATA_FILE, UCI_DATASET_ID, create_project_directories
 
 def download_dataset() -> pd.DataFrame:
     """Download, combine, and return the PhiUSIIL dataset."""
 
-    print(f"Downloading UCI dataset ID {DATASET_ID}...")
+    print(f"Downloading UCI dataset ID {UCI_DATASET_ID}...")
 
-    dataset = fetch_ucirepo(id=DATASET_ID)
+    dataset = fetch_ucirepo(id=UCI_DATASET_ID)
 
     features = dataset.data.features.copy()
     targets = dataset.data.targets.copy()
@@ -38,10 +32,10 @@ def download_dataset() -> pd.DataFrame:
 def save_dataset(dataframe: pd.DataFrame) -> None:
     """Save the downloaded dataset as a local CSV file."""
 
-    OUTPUT_DIRECTORY.mkdir(parents=True, exist_ok=True)
-    dataframe.to_csv(OUTPUT_FILE, index=False)
+    create_project_directories()
+    dataframe.to_csv(RAW_DATA_FILE, index=False)
 
-    print(f"Dataset saved to: {OUTPUT_FILE}")
+    print(f"Dataset saved to: {RAW_DATA_FILE}")
     print(f"Rows: {dataframe.shape[0]:,}")
     print(f"Columns: {dataframe.shape[1]}")
 
