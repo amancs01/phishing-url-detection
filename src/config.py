@@ -14,12 +14,15 @@ MODEL_DIRECTORY = PROJECT_ROOT / "models"
 RESULTS_DIRECTORY = PROJECT_ROOT / "results"
 REPORTS_DIRECTORY = PROJECT_ROOT / "reports"
 FIGURES_DIRECTORY = REPORTS_DIRECTORY / "figures"
+NOTEBOOKS_DIRECTORY = PROJECT_ROOT / "notebooks"
 
 
 # Dataset settings
 UCI_DATASET_ID = 967
 RAW_DATA_FILE = RAW_DATA_DIRECTORY / "phiusil_raw.csv"
 PROCESSED_DATA_FILE = PROCESSED_DATA_DIRECTORY / "phiusil_url_features.csv"
+DATASET_SCHEMA_FILE = RESULTS_DIRECTORY / "dataset_schema.json"
+DATA_VALIDATION_FILE = RESULTS_DIRECTORY / "data_validation.json"
 
 
 # Model settings
@@ -41,6 +44,7 @@ def create_project_directories() -> None:
         RESULTS_DIRECTORY,
         REPORTS_DIRECTORY,
         FIGURES_DIRECTORY,
+        NOTEBOOKS_DIRECTORY,
     ]
 
     for directory in directories:
