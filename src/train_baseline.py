@@ -7,12 +7,13 @@ import pandas as pd
 from sklearn.tree import DecisionTreeClassifier
 
 from src.config import (
+    BASELINE_CONFUSION_MATRIX_FILE,
     BASELINE_METRICS_FILE,
     BASELINE_MODEL_FILE,
     RANDOM_STATE,
     create_project_directories,
 )
-from src.evaluate import evaluate_model
+from src.evaluate import evaluate_model, plot_confusion_matrix
 from src.feature_definitions import FEATURE_NAMES
 from src.inspect_data import find_target_column
 from src.split_data import TRAIN_FILE, VALIDATION_FILE
@@ -51,6 +52,12 @@ def train_baseline_model() -> tuple[DecisionTreeClassifier, dict]:
 
     train_metrics = evaluate_model(model, x_train, y_train)
     validation_metrics = evaluate_model(model, x_validation, y_validation)
+    validation_predictions = model.predict(x_validation)
+    validation_confusion_matrix = plot_confusion_matrix(
+        y_validation,
+        validation_predictions,
+        BASELINE_CONFUSION_MATRIX_FILE,
+    )
 
     metrics = {
         "algorithm": "DecisionTreeClassifier",
@@ -61,6 +68,7 @@ def train_baseline_model() -> tuple[DecisionTreeClassifier, dict]:
         "validation_accuracy": validation_metrics["accuracy"],
         "training_metrics": train_metrics,
         "validation_metrics": validation_metrics,
+        "validation_confusion_matrix": validation_confusion_matrix,
         "tree_depth": int(model.get_depth()),
         "leaves": int(model.get_n_leaves()),
         "training_samples": int(len(train_data)),
@@ -101,12 +109,18 @@ def main() -> None:
         "Validation phishing ROC-AUC: "
         f"{metrics['validation_metrics']['roc_auc_phishing']:.4f}"
     )
+    print(f"Validation confusion matrix: {metrics['validation_confusion_matrix']}")
+    print(
+        "Most security-sensitive error: "
+        "actual phishing predicted legitimate"
+    )
     print(f"Tree depth: {metrics['tree_depth']}")
     print(f"Number of leaves: {metrics['leaves']}")
     print(f"Training samples: {metrics['training_samples']:,}")
     print(f"Number of features: {metrics['feature_count']}")
     print(f"Model saved to: {BASELINE_MODEL_FILE}")
     print(f"Metrics saved to: {BASELINE_METRICS_FILE}")
+    print(f"Confusion matrix saved to: {BASELINE_CONFUSION_MATRIX_FILE}")
 
 
 if __name__ == "__main__":

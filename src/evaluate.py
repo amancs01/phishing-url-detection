@@ -7,10 +7,12 @@ interpretation, phishing is the important positive class, so these helpers use
 
 from typing import Any
 
+import matplotlib.pyplot as plt
 import numpy as np
 from sklearn.metrics import (
     accuracy_score,
     classification_report,
+    confusion_matrix,
     f1_score,
     precision_score,
     recall_score,
@@ -24,6 +26,7 @@ LABEL_NAMES = {
     PHISHING_LABEL: "Phishing",
     LEGITIMATE_LABEL: "Legitimate",
 }
+CONFUSION_MATRIX_LABELS = [PHISHING_LABEL, LEGITIMATE_LABEL]
 
 
 def phishing_probabilities(model: Any, features) -> np.ndarray | None:
@@ -90,3 +93,70 @@ def evaluate_model(model: Any, features, target) -> dict:
         y_pred=predictions,
         phishing_scores=probabilities,
     )
+
+
+def calculate_confusion_matrix(y_true, y_pred) -> dict:
+    """Return confusion matrix values with phishing listed first.
+
+    Matrix layout:
+    - actual phishing, predicted phishing: phishing caught correctly
+    - actual phishing, predicted legitimate: phishing missed as legitimate
+    - actual legitimate, predicted phishing: legitimate URL flagged as phishing
+    - actual legitimate, predicted legitimate: legitimate URL allowed correctly
+
+    The most security-sensitive error is actual phishing predicted legitimate.
+    """
+
+    matrix = confusion_matrix(
+        y_true,
+        y_pred,
+        labels=CONFUSION_MATRIX_LABELS,
+    )
+
+    return {
+        "labels": ["Phishing", "Legitimate"],
+        "matrix": matrix.tolist(),
+        "phishing_predicted_phishing": int(matrix[0, 0]),
+        "phishing_predicted_legitimate": int(matrix[0, 1]),
+        "legitimate_predicted_phishing": int(matrix[1, 0]),
+        "legitimate_predicted_legitimate": int(matrix[1, 1]),
+        "most_security_sensitive_error": "actual phishing predicted legitimate",
+    }
+
+
+def plot_confusion_matrix(y_true, y_pred, output_path) -> dict:
+    """Save a readable confusion matrix plot and return its values."""
+
+    matrix_details = calculate_confusion_matrix(y_true, y_pred)
+    matrix = np.asarray(matrix_details["matrix"])
+    labels = matrix_details["labels"]
+
+    fig, ax = plt.subplots(figsize=(6, 5))
+    image = ax.imshow(matrix, cmap="Blues")
+    fig.colorbar(image, ax=ax)
+
+    ax.set_title("Baseline validation confusion matrix")
+    ax.set_xlabel("Predicted label")
+    ax.set_ylabel("Actual label")
+    ax.set_xticks(range(len(labels)), labels)
+    ax.set_yticks(range(len(labels)), labels)
+
+    threshold = matrix.max() / 2
+    for row_index in range(matrix.shape[0]):
+        for column_index in range(matrix.shape[1]):
+            value = matrix[row_index, column_index]
+            text_color = "white" if value > threshold else "black"
+            ax.text(
+                column_index,
+                row_index,
+                f"{value:,}",
+                ha="center",
+                va="center",
+                color=text_color,
+            )
+
+    plt.tight_layout()
+    fig.savefig(output_path, dpi=150)
+    plt.close(fig)
+
+    return matrix_details

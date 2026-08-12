@@ -87,6 +87,27 @@
     },
     "roc_auc_phishing": 0.9957662409867525
   },
+  "validation_confusion_matrix": {
+    "labels": [
+      "Phishing",
+      "Legitimate"
+    ],
+    "matrix": [
+      [
+        15002,
+        140
+      ],
+      [
+        25,
+        20202
+      ]
+    ],
+    "phishing_predicted_phishing": 15002,
+    "phishing_predicted_legitimate": 140,
+    "legitimate_predicted_phishing": 25,
+    "legitimate_predicted_legitimate": 20202,
+    "most_security_sensitive_error": "actual phishing predicted legitimate"
+  },
   "tree_depth": 25,
   "leaves": 388,
   "training_samples": 165056,
