@@ -15,8 +15,78 @@
     "random_state": 42,
     "splitter": "best"
   },
+  "positive_class": "phishing",
+  "positive_label": 0,
   "training_accuracy": 0.9961891721597519,
   "validation_accuracy": 0.9953348977918516,
+  "training_metrics": {
+    "accuracy": 0.9961891721597519,
+    "precision_phishing": 0.9993867480532816,
+    "recall_phishing": 0.9917068821556445,
+    "f1_phishing": 0.995532004063106,
+    "classification_report": {
+      "Phishing": {
+        "precision": 0.9993867480532816,
+        "recall": 0.9917068821556445,
+        "f1-score": 0.995532004063106,
+        "support": 70661.0
+      },
+      "Legitimate": {
+        "precision": 0.9938275506119784,
+        "recall": 0.9995444673976376,
+        "f1-score": 0.9966778110524842,
+        "support": 94395.0
+      },
+      "accuracy": 0.9961891721597519,
+      "macro avg": {
+        "precision": 0.9966071493326301,
+        "recall": 0.995625674776641,
+        "f1-score": 0.9961049075577951,
+        "support": 165056.0
+      },
+      "weighted avg": {
+        "precision": 0.9962074607661076,
+        "recall": 0.9961891721597519,
+        "f1-score": 0.9961872874261001,
+        "support": 165056.0
+      }
+    },
+    "roc_auc_phishing": 0.9981824179855864
+  },
+  "validation_metrics": {
+    "accuracy": 0.9953348977918516,
+    "precision_phishing": 0.9983363279430358,
+    "recall_phishing": 0.990754193633602,
+    "f1_phishing": 0.9945308097716199,
+    "classification_report": {
+      "Phishing": {
+        "precision": 0.9983363279430358,
+        "recall": 0.990754193633602,
+        "f1-score": 0.9945308097716199,
+        "support": 15142.0
+      },
+      "Legitimate": {
+        "precision": 0.9931176875430144,
+        "recall": 0.998764028279033,
+        "f1-score": 0.9959328551356947,
+        "support": 20227.0
+      },
+      "accuracy": 0.9953348977918516,
+      "macro avg": {
+        "precision": 0.9957270077430251,
+        "recall": 0.9947591109563174,
+        "f1-score": 0.9952318324536573,
+        "support": 35369.0
+      },
+      "weighted avg": {
+        "precision": 0.9953518658612346,
+        "recall": 0.9953348977918516,
+        "f1-score": 0.9953326184622568,
+        "support": 35369.0
+      }
+    },
+    "roc_auc_phishing": 0.9957662409867525
+  },
   "tree_depth": 25,
   "leaves": 388,
   "training_samples": 165056,
