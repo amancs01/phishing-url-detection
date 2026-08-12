@@ -32,6 +32,8 @@ VALIDATION_SIZE = 0.15
 
 MODEL_FILE = MODEL_DIRECTORY / "decision_tree_model.joblib"
 MODEL_METADATA_FILE = MODEL_DIRECTORY / "model_metadata.json"
+BASELINE_MODEL_FILE = MODEL_DIRECTORY / "baseline_decision_tree.joblib"
+BASELINE_METRICS_FILE = RESULTS_DIRECTORY / "baseline_model_metrics.json"
 
 
 def create_project_directories() -> None:
