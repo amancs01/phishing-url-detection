@@ -39,6 +39,9 @@ BASELINE_CONFUSION_MATRIX_FILE = (
 )
 TUNING_RESULTS_FILE = RESULTS_DIRECTORY / "decision_tree_tuning.csv"
 BEST_PARAMETERS_FILE = RESULTS_DIRECTORY / "best_parameters.json"
+PRUNING_RESULTS_FILE = RESULTS_DIRECTORY / "pruning_analysis.csv"
+PRUNING_F1_FIGURE = FIGURES_DIRECTORY / "pruning_f1.png"
+PRUNING_COMPLEXITY_FIGURE = FIGURES_DIRECTORY / "pruning_complexity.png"
 
 
 def create_project_directories() -> None:
