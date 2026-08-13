@@ -1,0 +1,64 @@
+{
+  "evaluation_split": "test",
+  "model": "optimized_decision_tree",
+  "positive_class": "phishing",
+  "positive_label": 0,
+  "test_rows": 35370,
+  "metrics": {
+    "accuracy": 0.9958722080859486,
+    "precision_phishing": 0.9993340436867342,
+    "recall_phishing": 0.9910183595297847,
+    "f1_phishing": 0.9951588301611513,
+    "classification_report": {
+      "Phishing": {
+        "precision": 0.9993340436867342,
+        "recall": 0.9910183595297847,
+        "f1-score": 0.9951588301611513,
+        "support": 15142.0
+      },
+      "Legitimate": {
+        "precision": 0.9933182666797681,
+        "recall": 0.9995056357524224,
+        "f1-score": 0.996402345867626,
+        "support": 20228.0
+      },
+      "accuracy": 0.9958722080859486,
+      "macro avg": {
+        "precision": 0.9963261551832512,
+        "recall": 0.9952619976411035,
+        "f1-score": 0.9957805880143886,
+        "support": 35370.0
+      },
+      "weighted avg": {
+        "precision": 0.9958936383348284,
+        "recall": 0.9958722080859486,
+        "f1-score": 0.9958699931724764,
+        "support": 35370.0
+      }
+    },
+    "roc_auc_phishing": 0.9981121910132035
+  },
+  "confusion_matrix": {
+    "labels": [
+      "Phishing",
+      "Legitimate"
+    ],
+    "matrix": [
+      [
+        15006,
+        136
+      ],
+      [
+        10,
+        20218
+      ]
+    ],
+    "phishing_predicted_phishing": 15006,
+    "phishing_predicted_legitimate": 136,
+    "legitimate_predicted_phishing": 10,
+    "legitimate_predicted_legitimate": 20218,
+    "most_security_sensitive_error": "actual phishing predicted legitimate"
+  },
+  "test_set_used_for_model_selection": false,
+  "retuning_after_test_evaluation": false
+}

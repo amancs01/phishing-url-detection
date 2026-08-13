@@ -43,6 +43,10 @@ BEST_PARAMETERS_FILE = RESULTS_DIRECTORY / "best_parameters.json"
 PRUNING_RESULTS_FILE = RESULTS_DIRECTORY / "pruning_analysis.csv"
 PRUNING_F1_FIGURE = FIGURES_DIRECTORY / "pruning_f1.png"
 PRUNING_COMPLEXITY_FIGURE = FIGURES_DIRECTORY / "pruning_complexity.png"
+FINAL_TEST_METRICS_FILE = RESULTS_DIRECTORY / "final_test_metrics.json"
+FINAL_TEST_CONFUSION_MATRIX_FILE = (
+    FIGURES_DIRECTORY / "final_test_confusion_matrix.png"
+)
 
 
 def create_project_directories() -> None:
