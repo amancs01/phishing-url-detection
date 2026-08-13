@@ -37,6 +37,8 @@ BASELINE_METRICS_FILE = RESULTS_DIRECTORY / "baseline_model_metrics.json"
 BASELINE_CONFUSION_MATRIX_FILE = (
     FIGURES_DIRECTORY / "baseline_validation_confusion_matrix.png"
 )
+TUNING_RESULTS_FILE = RESULTS_DIRECTORY / "decision_tree_tuning.csv"
+BEST_PARAMETERS_FILE = RESULTS_DIRECTORY / "best_parameters.json"
 
 
 def create_project_directories() -> None:

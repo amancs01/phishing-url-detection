@@ -1,0 +1,14 @@
+{
+  "algorithm": "DecisionTreeClassifier",
+  "scoring": "f1_score with phishing as the positive class",
+  "positive_label": 0,
+  "cross_validation_folds": 3,
+  "candidate_configurations": 108,
+  "best_parameters": {
+    "criterion": "entropy",
+    "max_depth": 10,
+    "min_samples_leaf": 1,
+    "min_samples_split": 2
+  },
+  "best_mean_cv_phishing_f1": 0.9948480260840497
+}
