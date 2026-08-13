@@ -1,0 +1,93 @@
+{
+  "algorithm": "DecisionTreeClassifier",
+  "dataset_name": "UCI PhiUSIIL Phishing URL Dataset",
+  "feature_names": [
+    "url_length",
+    "domain_length",
+    "path_length",
+    "query_length",
+    "number_of_dots",
+    "number_of_hyphens",
+    "number_of_underscores",
+    "number_of_slashes",
+    "number_of_question_marks",
+    "number_of_equal_signs",
+    "number_of_at_symbols",
+    "number_of_ampersands",
+    "number_of_percent_symbols",
+    "number_of_digits",
+    "number_of_letters",
+    "digit_ratio",
+    "letter_ratio",
+    "special_character_count",
+    "number_of_subdomains",
+    "domain_is_ip",
+    "uses_https_text",
+    "has_port",
+    "number_of_query_parameters",
+    "suspicious_keyword_count",
+    "has_suspicious_keyword",
+    "known_shortener_domain"
+  ],
+  "feature_count": 26,
+  "selected_hyperparameters": {
+    "criterion": "entropy",
+    "max_depth": 10,
+    "min_samples_leaf": 1,
+    "min_samples_split": 2,
+    "ccp_alpha": 0.0,
+    "random_state": 42
+  },
+  "random_state": 42,
+  "training_rows": 200425,
+  "development_training_source": "train.csv and validation.csv combined after model selection",
+  "test_set_used_for_selection": false,
+  "label_meanings": {
+    "0": "phishing",
+    "1": "legitimate"
+  },
+  "positive_class": "phishing",
+  "positive_label": 0,
+  "selection_evidence": {
+    "best_cross_validation_phishing_f1": 0.9948480260840497,
+    "pruning_selection_rule": "Choose the ccp_alpha with the best validation phishing F1 from pruning_analysis.csv before final test evaluation."
+  },
+  "development_training_metrics": {
+    "accuracy": 0.9957540227017587,
+    "precision_phishing": 0.9991656285989612,
+    "recall_phishing": 0.9909094087619315,
+    "f1_phishing": 0.9950203924001007,
+    "classification_report": {
+      "Phishing": {
+        "precision": 0.9991656285989612,
+        "recall": 0.9909094087619315,
+        "f1-score": 0.9950203924001007,
+        "support": 85803.0
+      },
+      "Legitimate": {
+        "precision": 0.9932368573930687,
+        "recall": 0.9993805726649334,
+        "f1-score": 0.9962992437585072,
+        "support": 114622.0
+      },
+      "accuracy": 0.9957540227017587,
+      "macro avg": {
+        "precision": 0.996201242996015,
+        "recall": 0.9951449907134324,
+        "f1-score": 0.9956598180793039,
+        "support": 200425.0
+      },
+      "weighted avg": {
+        "precision": 0.9957749956282149,
+        "recall": 0.9957540227017587,
+        "f1-score": 0.9957517607443853,
+        "support": 200425.0
+      }
+    },
+    "roc_auc_phishing": 0.9979114875542083
+  },
+  "tree_depth": 10,
+  "leaves": 69,
+  "safety_statement": "The model uses only URL-text features generated locally and never requires opening, requesting, resolving, or contacting a URL.",
+  "generated_at_utc": "2026-08-13T15:16:23.892512+00:00"
+}
