@@ -47,6 +47,9 @@ FINAL_TEST_METRICS_FILE = RESULTS_DIRECTORY / "final_test_metrics.json"
 FINAL_TEST_CONFUSION_MATRIX_FILE = (
     FIGURES_DIRECTORY / "final_test_confusion_matrix.png"
 )
+FEATURE_IMPORTANCE_FILE = RESULTS_DIRECTORY / "feature_importance.csv"
+FEATURE_IMPORTANCE_FIGURE = FIGURES_DIRECTORY / "feature_importance.png"
+DECISION_TREE_PREVIEW_FIGURE = FIGURES_DIRECTORY / "decision_tree_preview.png"
 
 
 def create_project_directories() -> None:
