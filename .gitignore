@@ -43,6 +43,7 @@ data/processed/*
 
 # Generated model files
 models/*.joblib
+!models/optimized_decision_tree.joblib
 models/*.pkl
 
 # Temporary files
