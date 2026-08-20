@@ -312,5 +312,5 @@ to trusted security policies and tools.
 
 ## Licence
 
-The software code in this repository is licensed under the repository software
-licence. The PhiUSIIL dataset remains under its own CC BY 4.0 dataset licence.
+The software code in this repository is licensed under the MIT Licence. The
+PhiUSIIL dataset remains under its own CC BY 4.0 dataset licence.
