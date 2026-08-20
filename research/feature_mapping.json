@@ -1,0 +1,80 @@
+[
+  {
+    "supplied_feature": "URLLength",
+    "reconstructed_feature": "url_length",
+    "feature_type": "discrete",
+    "near_match_tolerance": 0.0
+  },
+  {
+    "supplied_feature": "DomainLength",
+    "reconstructed_feature": "domain_length",
+    "feature_type": "discrete",
+    "near_match_tolerance": 0.0
+  },
+  {
+    "supplied_feature": "IsDomainIP",
+    "reconstructed_feature": "domain_is_ip",
+    "feature_type": "discrete",
+    "near_match_tolerance": 0.0
+  },
+  {
+    "supplied_feature": "NoOfSubDomain",
+    "reconstructed_feature": "number_of_subdomains",
+    "feature_type": "discrete",
+    "near_match_tolerance": 0.0
+  },
+  {
+    "supplied_feature": "NoOfLettersInURL",
+    "reconstructed_feature": "number_of_letters",
+    "feature_type": "discrete",
+    "near_match_tolerance": 0.0
+  },
+  {
+    "supplied_feature": "LetterRatioInURL",
+    "reconstructed_feature": "letter_ratio",
+    "feature_type": "continuous",
+    "near_match_tolerance": 0.001
+  },
+  {
+    "supplied_feature": "NoOfDegitsInURL",
+    "reconstructed_feature": "number_of_digits",
+    "feature_type": "discrete",
+    "near_match_tolerance": 0.0
+  },
+  {
+    "supplied_feature": "DegitRatioInURL",
+    "reconstructed_feature": "digit_ratio",
+    "feature_type": "continuous",
+    "near_match_tolerance": 0.001
+  },
+  {
+    "supplied_feature": "NoOfEqualsInURL",
+    "reconstructed_feature": "number_of_equal_signs",
+    "feature_type": "discrete",
+    "near_match_tolerance": 0.0
+  },
+  {
+    "supplied_feature": "NoOfQMarkInURL",
+    "reconstructed_feature": "number_of_question_marks",
+    "feature_type": "discrete",
+    "near_match_tolerance": 0.0
+  },
+  {
+    "supplied_feature": "NoOfAmpersandInURL",
+    "reconstructed_feature": "number_of_ampersands",
+    "feature_type": "discrete",
+    "near_match_tolerance": 0.0
+  },
+  {
+    "supplied_feature": "NoOfOtherSpecialCharsInURL",
+    "reconstructed_feature": "special_character_count",
+    "feature_type": "discrete",
+    "near_match_tolerance": 0.0
+  },
+  {
+    "supplied_feature": "IsHTTPS",
+    "reconstructed_feature": "uses_https_text",
+    "feature_type": "discrete",
+    "near_match_tolerance": 0.0
+  }
+]
