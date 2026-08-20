@@ -75,7 +75,9 @@ def validate_mappings(
             )
 
         supplied_feature = mapping["supplied_feature"]
-        reconstructed_feature = mapping["reconstructed_feature"]
+        reconstructed_feature = mapping.get(
+            "current_extractor_feature", mapping["reconstructed_feature"]
+        )
         feature_type = mapping["feature_type"]
 
         if supplied_feature not in supplied_column_set:
@@ -93,6 +95,30 @@ def validate_mappings(
             raise ValueError(
                 f"Mapping for {supplied_feature} has invalid feature_type: {feature_type}"
             )
+
+
+def current_fidelity_mappings(mappings: list[dict[str, Any]]) -> list[dict[str, Any]]:
+    """Return mapping records that target the production extractor."""
+
+    filtered_mappings: list[dict[str, Any]] = []
+
+    for mapping in mappings:
+        if not mapping.get("current_fidelity_audit", True):
+            continue
+
+        current_feature = mapping.get("current_extractor_feature")
+
+        if current_feature is None:
+            continue
+
+        filtered_mapping = mapping.copy()
+        filtered_mapping["reconstructed_feature"] = current_feature
+        filtered_mappings.append(filtered_mapping)
+
+    if not filtered_mappings:
+        raise ValueError("No current extractor mappings are available.")
+
+    return filtered_mappings
 
 
 def build_reconstructed_features(urls: pd.Series) -> pd.DataFrame:
@@ -263,7 +289,7 @@ def run_feature_fidelity_audit(
     """Run the full feature-fidelity audit and return output objects."""
 
     raw_dataframe = pd.read_csv(raw_data_file)
-    mappings = load_feature_mapping(mapping_file)
+    mappings = current_fidelity_mappings(load_feature_mapping(mapping_file))
     validate_mappings(mappings, raw_dataframe.columns.tolist())
 
     url_column = find_url_column(raw_dataframe)
