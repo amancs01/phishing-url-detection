@@ -106,7 +106,9 @@ def current_fidelity_mappings(mappings: list[dict[str, Any]]) -> list[dict[str, 
         if not mapping.get("current_fidelity_audit", True):
             continue
 
-        current_feature = mapping.get("current_extractor_feature")
+        current_feature = mapping.get(
+            "current_extractor_feature", mapping["reconstructed_feature"]
+        )
 
         if current_feature is None:
             continue

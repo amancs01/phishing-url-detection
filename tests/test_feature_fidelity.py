@@ -10,6 +10,7 @@ import pytest
 from src.audit_feature_fidelity import (
     REQUIRED_AUDIT_COLUMNS,
     compute_feature_fidelity,
+    current_fidelity_mappings,
     run_feature_fidelity_audit,
     validate_mappings,
 )
@@ -78,20 +79,28 @@ def test_no_deployment_feature_is_webpage_or_network_dependent() -> None:
 
 
 def test_mappings_reference_valid_dataset_and_extractor_features() -> None:
-    """Mappings should connect real PhiUSIIL columns to real extractor names."""
+    """Mappings should connect real supplied, research, and extractor names."""
 
     mappings = load_mappings()
+    schema_columns = set(load_schema_columns())
 
-    validate_mappings(mappings, load_schema_columns())
+    assert len(mappings) == 18
+
+    for mapping in mappings:
+        assert mapping["supplied_feature"] in schema_columns
+        assert mapping["reconstructed_feature"].startswith("d_")
+
+    validate_mappings(current_fidelity_mappings(mappings), load_schema_columns())
 
 
 def test_committed_audit_output_has_expected_columns() -> None:
     """The committed audit CSV should expose the documented statistics."""
 
     audit = pd.read_csv(FIDELITY_FILE)
+    current_mappings = current_fidelity_mappings(load_mappings())
 
     assert audit.columns.tolist() == REQUIRED_AUDIT_COLUMNS
-    assert len(audit) == len(load_mappings())
+    assert len(audit) == len(current_mappings)
 
 
 def test_exact_match_and_mae_calculations_are_correct() -> None:
