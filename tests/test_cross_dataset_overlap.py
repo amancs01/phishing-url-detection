@@ -11,7 +11,8 @@ from src.audit_cross_dataset_overlap import (
     key_overlap_summary,
     normalized_url_key,
 )
-from src.config import CROSS_DATASET_OVERLAP_SUMMARY_FILE
+from src.config import CROSS_DATASET_OVERLAP_SUMMARY_FILE, OVERLAP_CONTROLLED_VALIDATION_FILE
+from src.run_overlap_controlled_validation import safe_binary_metrics
 
 
 def test_exact_overlap_counting_uses_stripped_raw_urls() -> None:
@@ -118,6 +119,86 @@ def test_committed_overlap_summary_contains_no_raw_urls() -> None:
         return
 
     text = Path(CROSS_DATASET_OVERLAP_SUMMARY_FILE).read_text(encoding="utf-8")
+    json.loads(text)
+
+    for marker in ["http://", "https://", "www.", ".com/", ".net/", ".org/"]:
+        assert marker not in text
+
+
+def test_single_class_roc_auc_and_balanced_accuracy_are_undefined() -> None:
+    """Two-class metrics should not receive numeric fallbacks on one-class subsets."""
+
+    metrics = safe_binary_metrics(
+        pd.Series([0, 0, 0]),
+        pd.Series([0, 0, 0]),
+        pd.Series([0.9, 0.8, 0.7]),
+    )
+
+    assert metrics["accuracy"] == 1.0
+    assert metrics["phishing_f1"] == 1.0
+    assert metrics["two_class_metrics_defined"] is False
+    assert metrics["roc_auc"] is None
+    assert metrics["balanced_accuracy"] is None
+    assert metrics["pr_auc"] is None
+    assert metrics["specificity"] is None
+
+
+def test_two_class_subset_metrics_remain_defined() -> None:
+    """Two-class subsets should keep ordinary binary metrics."""
+
+    metrics = safe_binary_metrics(
+        pd.Series([0, 1]),
+        pd.Series([0, 0]),
+        pd.Series([0.8, 0.8]),
+    )
+
+    assert metrics["two_class_metrics_defined"] is True
+    assert metrics["balanced_accuracy"] == 0.5
+    assert metrics["roc_auc"] == 0.5
+    assert metrics["specificity"] == 0.0
+
+
+def test_overlap_controlled_validation_does_not_fit_model() -> None:
+    """Overlap-controlled validation must not train or retune."""
+
+    import src.run_overlap_controlled_validation as run_overlap_controlled_validation
+
+    source = inspect.getsource(run_overlap_controlled_validation)
+
+    assert ".fit(" not in source
+    assert "GridSearchCV" not in source
+    assert "RandomizedSearchCV" not in source
+
+
+def test_overlap_controlled_code_has_no_network_dependency() -> None:
+    """Overlap-controlled validation should not contact URLs."""
+
+    import src.run_overlap_controlled_validation as run_overlap_controlled_validation
+
+    source = inspect.getsource(run_overlap_controlled_validation)
+    banned_snippets = [
+        "requests",
+        "urllib.request",
+        "selenium",
+        "playwright",
+        "socket",
+        "whois",
+        "urlopen",
+        ".resolve(",
+        "gethostby",
+    ]
+
+    for snippet in banned_snippets:
+        assert snippet not in source
+
+
+def test_committed_overlap_controlled_output_contains_no_raw_urls() -> None:
+    """Overlap-controlled output should be aggregate-only JSON."""
+
+    if not Path(OVERLAP_CONTROLLED_VALIDATION_FILE).exists():
+        return
+
+    text = Path(OVERLAP_CONTROLLED_VALIDATION_FILE).read_text(encoding="utf-8")
     json.loads(text)
 
     for marker in ["http://", "https://", "www.", ".com/", ".net/", ".org/"]:
