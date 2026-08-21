@@ -40,6 +40,18 @@ URL_PHISH_EXTERNAL_MATRIX_FILE = (
     EXTERNAL_PROCESSED_DATA_DIRECTORY / "url_phish_v2_tier_e_features.csv"
 )
 EXTERNAL_DATASET_SUMMARY_FILE = RESULTS_DIRECTORY / "external_dataset_summary.json"
+EXTERNAL_VALIDATION_METRICS_FILE = (
+    RESULTS_DIRECTORY / "external_validation_metrics.json"
+)
+EXTERNAL_VALIDATION_PREDICTIONS_FILE = (
+    RESULTS_DIRECTORY / "external_validation_predictions.csv"
+)
+EXTERNAL_CONFUSION_MATRIX_FIGURE = (
+    FIGURES_DIRECTORY / "external_confusion_matrix.png"
+)
+INTERNAL_VS_EXTERNAL_METRICS_FIGURE = (
+    FIGURES_DIRECTORY / "internal_vs_external_metrics.png"
+)
 
 
 # Model settings

@@ -1,0 +1,80 @@
+{
+  "dataset_name": "URL-Phish: A Feature-Engineered Dataset for Phishing Detection",
+  "dataset_version": 2,
+  "doi": "10.17632/65z9twcx3r.2",
+  "external_rows": 116600,
+  "model_file": "D:\\Projects\\phishing-url-detection\\models\\optimized_decision_tree.joblib",
+  "model_metadata_file": "D:\\Projects\\phishing-url-detection\\models\\model_metadata.json",
+  "model_changed": false,
+  "external_training_performed": false,
+  "external_tuning_performed": false,
+  "threshold_changed": false,
+  "feature_names": [
+    "url_length",
+    "domain_length",
+    "path_length",
+    "query_length",
+    "number_of_dots",
+    "number_of_hyphens",
+    "number_of_underscores",
+    "number_of_slashes",
+    "number_of_question_marks",
+    "number_of_equal_signs",
+    "number_of_at_symbols",
+    "number_of_ampersands",
+    "number_of_percent_symbols",
+    "number_of_digits",
+    "number_of_letters",
+    "digit_ratio",
+    "letter_ratio",
+    "special_character_count",
+    "number_of_subdomains",
+    "domain_is_ip",
+    "uses_https_text",
+    "has_port",
+    "number_of_query_parameters",
+    "suspicious_keyword_count",
+    "has_suspicious_keyword",
+    "known_shortener_domain"
+  ],
+  "fixed_tree_params": {
+    "criterion": "entropy",
+    "max_depth": 10,
+    "min_samples_leaf": 1,
+    "min_samples_split": 2,
+    "ccp_alpha": 0.0,
+    "random_state": 42
+  },
+  "phishing_probability": "Probability column selected by locating project phishing label 0 inside model.classes_.",
+  "metrics": {
+    "accuracy": 0.19650943396226414,
+    "phishing_precision": 0.14920591581342435,
+    "phishing_recall": 0.9875903614457832,
+    "phishing_f1": 0.2592449100612769,
+    "roc_auc": 0.5245679499999999,
+    "pr_auc": 0.14862740181402137,
+    "balanced_accuracy": 0.5263901807228916,
+    "confusion_matrix": [
+      [
+        16394,
+        206
+      ],
+      [
+        93481,
+        6519
+      ]
+    ],
+    "true_phishing_predicted_phishing": 16394,
+    "true_phishing_predicted_legitimate": 206,
+    "true_legitimate_predicted_phishing": 93481,
+    "true_legitimate_predicted_legitimate": 6519,
+    "confusion_matrix_order": "[[actual phishing -> predicted phishing, actual phishing -> predicted legitimate], [actual legitimate -> predicted phishing, actual legitimate -> predicted legitimate]]"
+  },
+  "prediction_file_columns": [
+    "row_index",
+    "actual_label",
+    "predicted_label",
+    "phishing_probability"
+  ],
+  "safety_statement": "External evaluation used the ignored local Tier E feature matrix; no dataset URL was opened, requested, resolved, or contacted."
+}
