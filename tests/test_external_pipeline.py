@@ -5,6 +5,11 @@ import inspect
 import pandas as pd
 
 from src.feature_definitions import FEATURE_NAMES
+from src.external_sensitivity_analysis import (
+    balanced_sensitivity_records,
+    build_balanced_sample,
+    metrics_for_predictions,
+)
 from src.prepare_external_data import (
     TARGET_COLUMN,
     build_external_feature_matrix,
@@ -142,3 +147,73 @@ def test_committed_external_metrics_have_no_raw_urls() -> None:
     assert "http://" not in text
     assert "https://" not in text
     assert "www." not in text
+
+
+def test_balanced_sensitivity_sampling_is_deterministic() -> None:
+    """The same seed should produce the same balanced external row set."""
+
+    predictions = pd.DataFrame(
+        {
+            "row_index": range(8),
+            "actual_label": [0, 0, 1, 1, 1, 1, 1, 1],
+            "predicted_label": [0, 1, 1, 0, 1, 1, 0, 1],
+            "phishing_probability": [0.9, 0.4, 0.1, 0.8, 0.2, 0.3, 0.7, 0.1],
+        }
+    )
+
+    first = build_balanced_sample(predictions, seed=42)
+    second = build_balanced_sample(predictions, seed=42)
+
+    assert first["row_index"].tolist() == second["row_index"].tolist()
+    assert len(first[first["actual_label"] == 0]) == 2
+    assert len(first[first["actual_label"] == 1]) == 2
+
+
+def test_balanced_sample_recall_matches_full_when_all_phishing_retained() -> None:
+    """Balanced recall should match full recall because all phishing rows remain."""
+
+    predictions = pd.DataFrame(
+        {
+            "row_index": range(8),
+            "actual_label": [0, 0, 1, 1, 1, 1, 1, 1],
+            "predicted_label": [0, 1, 1, 0, 1, 1, 0, 1],
+            "phishing_probability": [0.9, 0.4, 0.1, 0.8, 0.2, 0.3, 0.7, 0.1],
+        }
+    )
+    balanced = build_balanced_sample(predictions, seed=42)
+
+    assert (
+        metrics_for_predictions(predictions)["phishing_recall"]
+        == metrics_for_predictions(balanced)["phishing_recall"]
+    )
+
+
+def test_balanced_sensitivity_records_include_summary_safe_schema() -> None:
+    """Sensitivity outputs should be aggregate rows with no URL fields."""
+
+    predictions = pd.DataFrame(
+        {
+            "row_index": range(12),
+            "actual_label": [0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+            "predicted_label": [0, 1, 0, 1, 0, 1, 1, 0, 1, 1, 0, 1],
+            "phishing_probability": [
+                0.9,
+                0.4,
+                0.8,
+                0.1,
+                0.7,
+                0.3,
+                0.2,
+                0.6,
+                0.1,
+                0.2,
+                0.8,
+                0.1,
+            ],
+        }
+    )
+
+    records = balanced_sensitivity_records(predictions)
+
+    assert records[0]["analysis"] == "full_external"
+    assert all("url" not in record for record in records)

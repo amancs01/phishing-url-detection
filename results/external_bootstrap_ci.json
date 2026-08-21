@@ -1,0 +1,32 @@
+{
+  "bootstrap_iterations": 1000,
+  "bootstrap_seed": 20260821,
+  "metrics": {
+    "accuracy": {
+      "observed": 0.19650943396226414,
+      "ci_lower": 0.194125,
+      "ci_upper": 0.19877422813036022
+    },
+    "phishing_precision": {
+      "observed": 0.14920591581342435,
+      "ci_lower": 0.14702935966478373,
+      "ci_upper": 0.15149282548662757
+    },
+    "phishing_recall": {
+      "observed": 0.9875903614457832,
+      "ci_lower": 0.9857973106194358,
+      "ci_upper": 0.9891919381781822
+    },
+    "phishing_f1": {
+      "observed": 0.2592449100612769,
+      "ci_lower": 0.25620539369913525,
+      "ci_upper": 0.2626239496203945
+    },
+    "roc_auc": {
+      "observed": 0.5245679499999999,
+      "ci_lower": 0.5232944099688789,
+      "ci_upper": 0.5257187355475804
+    }
+  },
+  "safety_statement": "Bootstrap used anonymous saved prediction rows only; no dataset URL was opened, requested, resolved, or contacted."
+}
