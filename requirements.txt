@@ -11,6 +11,7 @@ matplotlib>=3.11,<4.0
 
 # Dataset access
 ucimlrepo>=0.0.7,<0.1
+publicsuffix2>=2.20191221,<3.0
 
 # Notebook development
 jupyter>=1.1,<2.0
