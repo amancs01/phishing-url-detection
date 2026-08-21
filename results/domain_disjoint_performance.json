@@ -1,0 +1,181 @@
+{
+  "fixed_tree_params": {
+    "criterion": "entropy",
+    "max_depth": 10,
+    "min_samples_leaf": 1,
+    "min_samples_split": 2,
+    "ccp_alpha": 0.0,
+    "random_state": 42
+  },
+  "evaluated_tiers": [
+    "D-matched",
+    "E"
+  ],
+  "domain_split_summary_file": "D:\\Projects\\phishing-url-detection\\results\\domain_disjoint_split_summary.json",
+  "test_data_used_for_model_selection": false,
+  "bootstrap_iterations": 1000,
+  "bootstrap_seed": 20260821,
+  "results": [
+    {
+      "tier": "D-matched",
+      "split_type": "domain_disjoint",
+      "feature_count": 18,
+      "training_accuracy": 0.9941535348394797,
+      "validation_accuracy": 0.9974553987955554,
+      "test_accuracy": 0.9970312985948147,
+      "phishing_precision": 0.9961068954140547,
+      "phishing_recall": 0.9969620921938978,
+      "phishing_f1": 0.9965343103277552,
+      "roc_auc": 0.9988973992758471,
+      "confusion_matrix": [
+        [
+          15096,
+          46
+        ],
+        [
+          59,
+          20168
+        ]
+      ],
+      "true_phishing_predicted_phishing": 15096,
+      "true_phishing_predicted_legitimate": 46,
+      "true_legitimate_predicted_phishing": 59,
+      "true_legitimate_predicted_legitimate": 20168,
+      "tree_depth": 10,
+      "number_of_leaves": 147,
+      "training_time_seconds": 0.7059298999374732,
+      "test_prediction_time_seconds": 0.06351690005976707,
+      "fixed_tree_params": {
+        "criterion": "entropy",
+        "max_depth": 10,
+        "min_samples_leaf": 1,
+        "min_samples_split": 2,
+        "ccp_alpha": 0.0,
+        "random_state": 42
+      },
+      "bootstrap_intervals": {
+        "accuracy": {
+          "observed": 0.9970312985948147,
+          "ci_lower": 0.9964941050072097,
+          "ci_upper": 0.9975967655291357
+        },
+        "phishing_recall": {
+          "observed": 0.9969620921938978,
+          "ci_lower": 0.9960926440207528,
+          "ci_upper": 0.9977739402259194
+        },
+        "phishing_f1": {
+          "observed": 0.9965343103277552,
+          "ci_lower": 0.9958903740831087,
+          "ci_upper": 0.9971709005405582
+        }
+      }
+    },
+    {
+      "tier": "E",
+      "split_type": "domain_disjoint",
+      "feature_count": 26,
+      "training_accuracy": 0.9950441362680771,
+      "validation_accuracy": 0.9979925923831604,
+      "test_accuracy": 0.9968899318612344,
+      "phishing_precision": 0.9980781974817761,
+      "phishing_recall": 0.9946506406022982,
+      "phishing_f1": 0.9963614712887007,
+      "roc_auc": 0.9982247717438902,
+      "confusion_matrix": [
+        [
+          15061,
+          81
+        ],
+        [
+          29,
+          20198
+        ]
+      ],
+      "true_phishing_predicted_phishing": 15061,
+      "true_phishing_predicted_legitimate": 81,
+      "true_legitimate_predicted_phishing": 29,
+      "true_legitimate_predicted_legitimate": 20198,
+      "tree_depth": 10,
+      "number_of_leaves": 80,
+      "training_time_seconds": 0.6151574000250548,
+      "test_prediction_time_seconds": 0.021784800104796886,
+      "fixed_tree_params": {
+        "criterion": "entropy",
+        "max_depth": 10,
+        "min_samples_leaf": 1,
+        "min_samples_split": 2,
+        "ccp_alpha": 0.0,
+        "random_state": 42
+      },
+      "bootstrap_intervals": {
+        "accuracy": {
+          "observed": 0.9968899318612344,
+          "ci_lower": 0.9962961915801973,
+          "ci_upper": 0.9974271254488394
+        },
+        "phishing_recall": {
+          "observed": 0.9946506406022982,
+          "ci_lower": 0.993474372836926,
+          "ci_upper": 0.9957741393523473
+        },
+        "phishing_f1": {
+          "observed": 0.9963614712887007,
+          "ci_lower": 0.9956875588024436,
+          "ci_upper": 0.9970846782676673
+        }
+      }
+    }
+  ],
+  "random_vs_domain_gaps": [
+    {
+      "tier": "D-matched",
+      "metric": "test_accuracy",
+      "random_split": 0.9944303081707662,
+      "domain_disjoint": 0.9970312985948147,
+      "domain_minus_random": 0.0026009904240484882,
+      "domain_minus_random_percentage_points": 0.2600990424048488
+    },
+    {
+      "tier": "D-matched",
+      "metric": "phishing_recall",
+      "random_split": 0.9881125346717738,
+      "domain_disjoint": 0.9969620921938978,
+      "domain_minus_random": 0.008849557522123908,
+      "domain_minus_random_percentage_points": 0.8849557522123908
+    },
+    {
+      "tier": "D-matched",
+      "metric": "phishing_f1",
+      "random_split": 0.9934597124929452,
+      "domain_disjoint": 0.9965343103277552,
+      "domain_minus_random": 0.003074597834810011,
+      "domain_minus_random_percentage_points": 0.3074597834810011
+    },
+    {
+      "tier": "E",
+      "metric": "test_accuracy",
+      "random_split": 0.995730845349166,
+      "domain_disjoint": 0.9968899318612344,
+      "domain_minus_random": 0.001159086512068419,
+      "domain_minus_random_percentage_points": 0.1159086512068419
+    },
+    {
+      "tier": "E",
+      "metric": "phishing_recall",
+      "random_split": 0.9906221106855104,
+      "domain_disjoint": 0.9946506406022982,
+      "domain_minus_random": 0.004028529916787815,
+      "domain_minus_random_percentage_points": 0.4028529916787815
+    },
+    {
+      "tier": "E",
+      "metric": "phishing_f1",
+      "random_split": 0.9949918742330272,
+      "domain_disjoint": 0.9963614712887007,
+      "domain_minus_random": 0.0013695970556735215,
+      "domain_minus_random_percentage_points": 0.13695970556735215
+    }
+  ],
+  "safety_statement": "The experiment used local feature matrices and saved domain-disjoint row indices only; no URL was contacted."
+}
