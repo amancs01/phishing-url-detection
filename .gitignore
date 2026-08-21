@@ -43,6 +43,8 @@ data/processed/*
 
 data/external/raw/*
 data/external/processed/*
+data/external/legitphish/raw/*
+data/external/legitphish/processed/*
 
 # Generated model files
 models/*.joblib

@@ -1,0 +1,85 @@
+{
+  "dataset_name": "LegitPhish Dataset",
+  "dataset_version": 2,
+  "doi": "10.17632/hx4m73v2sf.2",
+  "source": "Official Mendeley Data Version 2 CSV",
+  "raw_rows": 101219,
+  "analysis_rows": 101218,
+  "dropped_rows": {
+    "missing_url_or_label": 1
+  },
+  "url_column": "URL",
+  "target_column": "ClassLabel",
+  "target_convention": {
+    "0": "phishing",
+    "1": "legitimate"
+  },
+  "class_counts": {
+    "phishing_label_0": 63678,
+    "legitimate_label_1": 37540
+  },
+  "missing_diagnostics": {
+    "url_missing": 0,
+    "label_missing": 1,
+    "any_missing_source_row": 1,
+    "any_missing_matrix_row": 0
+  },
+  "duplicate_diagnostics": {
+    "duplicate_rows": 346,
+    "duplicate_url_rows": 346,
+    "conflicting_duplicate_url_values": 0,
+    "rows_with_conflicting_duplicate_url": 0
+  },
+  "feature_count": 26,
+  "feature_names": [
+    "url_length",
+    "domain_length",
+    "path_length",
+    "query_length",
+    "number_of_dots",
+    "number_of_hyphens",
+    "number_of_underscores",
+    "number_of_slashes",
+    "number_of_question_marks",
+    "number_of_equal_signs",
+    "number_of_at_symbols",
+    "number_of_ampersands",
+    "number_of_percent_symbols",
+    "number_of_digits",
+    "number_of_letters",
+    "digit_ratio",
+    "letter_ratio",
+    "special_character_count",
+    "number_of_subdomains",
+    "domain_is_ip",
+    "uses_https_text",
+    "has_port",
+    "number_of_query_parameters",
+    "suspicious_keyword_count",
+    "has_suspicious_keyword",
+    "known_shortener_domain"
+  ],
+  "used_source_columns_for_features": [
+    "URL"
+  ],
+  "ignored_legitphish_supplied_feature_columns": [
+    "url_length",
+    "has_ip_address",
+    "dot_count",
+    "https_flag",
+    "url_entropy",
+    "token_count",
+    "subdomain_count",
+    "query_param_count",
+    "tld_length",
+    "path_length",
+    "has_hyphen_in_domain",
+    "number_of_digits",
+    "tld_popularity",
+    "suspicious_file_extension",
+    "domain_name_length",
+    "percentage_numeric_chars"
+  ],
+  "label_inversion_applied": false,
+  "safety_statement": "LegitPhish URL strings were parsed locally with extract_url_features; no dataset URL was opened, requested, resolved, or contacted."
+}
