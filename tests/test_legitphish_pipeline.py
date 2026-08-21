@@ -16,6 +16,7 @@ from src.prepare_legitphish_data import (
     conflicting_duplicate_urls,
     summarize_legitphish_dataset,
 )
+from src.predict import LEGITIMATE_LABEL, PHISHING_LABEL
 from src.run_external_validation import phishing_probability_from_proba
 from src.run_legitphish_validation import load_selected_model
 
@@ -179,3 +180,50 @@ def test_committed_legitphish_outputs_do_not_contain_raw_urls() -> None:
         json.loads(text)
         for marker in url_like_markers:
             assert marker not in text
+
+
+def test_multi_dataset_origin_sampling_is_deterministic() -> None:
+    """LegitPhish origin diagnostics should use fixed sampling."""
+
+    from src.compare_external_shifts import build_origin_dataset
+
+    def frame_for(labels: list[int], offset: int) -> pd.DataFrame:
+        rows = []
+        for row_index, label in enumerate(labels):
+            row = {feature: float(offset + row_index) for feature in FEATURE_NAMES}
+            row["label"] = label
+            row[TARGET_COLUMN] = label
+            rows.append(row)
+        return pd.DataFrame(rows)
+
+    labels = [LEGITIMATE_LABEL] * 8 + [PHISHING_LABEL] * 8
+    internal = frame_for(labels, 0)
+    legitphish = frame_for(labels, 100)
+
+    x_first, y_first, counts_first = build_origin_dataset(
+        internal,
+        legitphish,
+        LEGITIMATE_LABEL,
+    )
+    x_second, y_second, counts_second = build_origin_dataset(
+        internal,
+        legitphish,
+        LEGITIMATE_LABEL,
+    )
+
+    pd.testing.assert_frame_equal(x_first, x_second)
+    pd.testing.assert_series_equal(y_first, y_second)
+    assert counts_first == counts_second
+
+
+def test_multi_dataset_shift_code_uses_fixed_origin_tree_settings() -> None:
+    """The LegitPhish origin diagnostic should mirror the fixed shallow tree setup."""
+
+    import src.compare_external_shifts as compare_external_shifts
+
+    source = inspect.getsource(compare_external_shifts)
+
+    assert "ORIGIN_RANDOM_STATE = 42" in source
+    assert "ORIGIN_TREE_MAX_DEPTH = 5" in source
+    assert "max_depth=ORIGIN_TREE_MAX_DEPTH" in source
+    assert "random_state=ORIGIN_RANDOM_STATE" in source

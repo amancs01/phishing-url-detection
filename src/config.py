@@ -83,6 +83,16 @@ EXTERNAL_FULL_VS_BALANCED_FIGURE = (
     FIGURES_DIRECTORY / "external_full_vs_balanced.png"
 )
 EXTERNAL_FEATURE_SHIFT_FILE = RESULTS_DIRECTORY / "external_feature_shift.csv"
+MULTI_DATASET_FEATURE_SHIFT_FILE = RESULTS_DIRECTORY / "multi_dataset_feature_shift.csv"
+MULTI_DATASET_ORIGIN_PERFORMANCE_FILE = (
+    RESULTS_DIRECTORY / "multi_dataset_origin_performance.json"
+)
+BENIGN_SHIFT_ACROSS_DATASETS_FIGURE = (
+    FIGURES_DIRECTORY / "benign_shift_across_datasets.png"
+)
+PHISHING_SHIFT_ACROSS_DATASETS_FIGURE = (
+    FIGURES_DIRECTORY / "phishing_shift_across_datasets.png"
+)
 
 
 # Model settings

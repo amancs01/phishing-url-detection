@@ -1,0 +1,136 @@
+{
+  "analysis_type": "POST-HOC DIAGNOSTIC ANALYSIS",
+  "model_purpose": "dataset-origin classification, not phishing detection",
+  "origin_label_meaning": {
+    "0": "PhiUSIIL source",
+    "1": "LegitPhish source"
+  },
+  "random_state": 42,
+  "diagnostic_tree_max_depth": 5,
+  "test_size": 0.3,
+  "experiments": [
+    {
+      "experiment": "legitimate_only_phiusiil_vs_legitphish_origin",
+      "semantic_label": 1,
+      "origin_label_meaning": {
+        "0": "PhiUSIIL source",
+        "1": "LegitPhish source"
+      },
+      "post_hoc_diagnostic": true,
+      "internal_available_rows": 134850,
+      "external_available_rows": 37540,
+      "balanced_internal_rows": 37540,
+      "balanced_external_rows": 37540,
+      "total_balanced_rows": 75080,
+      "origin_accuracy": 0.5079026815840881,
+      "balanced_accuracy": 0.507902681584088,
+      "roc_auc": 0.5082905233766158,
+      "tree_depth": 5,
+      "leaves": 12,
+      "top_feature_importances": [
+        {
+          "feature": "number_of_slashes",
+          "importance": 0.9210813398514464
+        },
+        {
+          "feature": "digit_ratio",
+          "importance": 0.029032068209711232
+        },
+        {
+          "feature": "letter_ratio",
+          "importance": 0.012592718945186187
+        },
+        {
+          "feature": "special_character_count",
+          "importance": 0.010352102220942226
+        },
+        {
+          "feature": "has_suspicious_keyword",
+          "importance": 0.0094342402299993
+        },
+        {
+          "feature": "url_length",
+          "importance": 0.008797230254422764
+        },
+        {
+          "feature": "number_of_letters",
+          "importance": 0.007198276338313049
+        },
+        {
+          "feature": "number_of_subdomains",
+          "importance": 0.001512023949978912
+        },
+        {
+          "feature": "domain_length",
+          "importance": 0.0
+        },
+        {
+          "feature": "path_length",
+          "importance": 0.0
+        }
+      ]
+    },
+    {
+      "experiment": "phishing_only_phiusiil_vs_legitphish_origin",
+      "semantic_label": 0,
+      "origin_label_meaning": {
+        "0": "PhiUSIIL source",
+        "1": "LegitPhish source"
+      },
+      "post_hoc_diagnostic": true,
+      "internal_available_rows": 100945,
+      "external_available_rows": 63678,
+      "balanced_internal_rows": 63678,
+      "balanced_external_rows": 63678,
+      "total_balanced_rows": 127356,
+      "origin_accuracy": 0.9526788284869265,
+      "balanced_accuracy": 0.9526786530849995,
+      "roc_auc": 0.9908151945360824,
+      "tree_depth": 5,
+      "leaves": 22,
+      "top_feature_importances": [
+        {
+          "feature": "domain_is_ip",
+          "importance": 0.7076582992025253
+        },
+        {
+          "feature": "number_of_underscores",
+          "importance": 0.18151325490022222
+        },
+        {
+          "feature": "path_length",
+          "importance": 0.03202900679340434
+        },
+        {
+          "feature": "url_length",
+          "importance": 0.031729359507002744
+        },
+        {
+          "feature": "uses_https_text",
+          "importance": 0.014317210979059913
+        },
+        {
+          "feature": "number_of_query_parameters",
+          "importance": 0.010083766535128108
+        },
+        {
+          "feature": "number_of_slashes",
+          "importance": 0.009346600158189982
+        },
+        {
+          "feature": "digit_ratio",
+          "importance": 0.006436464053392837
+        },
+        {
+          "feature": "domain_length",
+          "importance": 0.004638026724747851
+        },
+        {
+          "feature": "number_of_dots",
+          "importance": 0.002212031343300249
+        }
+      ]
+    }
+  ],
+  "safety_statement": "Origin diagnostics used local feature matrices only; no URL was opened, requested, resolved, or contacted."
+}
