@@ -59,6 +59,7 @@ EXTERNAL_BOOTSTRAP_CI_FILE = RESULTS_DIRECTORY / "external_bootstrap_ci.json"
 EXTERNAL_FULL_VS_BALANCED_FIGURE = (
     FIGURES_DIRECTORY / "external_full_vs_balanced.png"
 )
+EXTERNAL_FEATURE_SHIFT_FILE = RESULTS_DIRECTORY / "external_feature_shift.csv"
 
 
 # Model settings
