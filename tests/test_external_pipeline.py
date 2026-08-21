@@ -10,6 +10,7 @@ from src.external_sensitivity_analysis import (
     build_balanced_sample,
     metrics_for_predictions,
 )
+from src.analyze_class_conditional_shift import class_conditional_shift
 from src.prepare_external_data import (
     TARGET_COLUMN,
     build_external_feature_matrix,
@@ -217,3 +218,35 @@ def test_balanced_sensitivity_records_include_summary_safe_schema() -> None:
 
     assert records[0]["analysis"] == "full_external"
     assert all("url" not in record for record in records)
+
+
+def test_class_conditional_shift_uses_correct_project_labels() -> None:
+    """Legitimate/benign and phishing groups should use normalized project labels."""
+
+    internal = pd.DataFrame(
+        {
+            **{feature: [1, 2, 10, 20] for feature in FEATURE_NAMES},
+            "label": [1, 1, 0, 0],
+        }
+    )
+    external = pd.DataFrame(
+        {
+            **{feature: [3, 4, 30, 40] for feature in FEATURE_NAMES},
+            "target": [1, 1, 0, 0],
+        }
+    )
+
+    result = class_conditional_shift(internal, external)
+    benign_row = result[
+        (result["comparison"] == "legitimate_vs_benign")
+        & (result["feature"] == FEATURE_NAMES[0])
+    ].iloc[0]
+    phishing_row = result[
+        (result["comparison"] == "phishing_vs_phishing")
+        & (result["feature"] == FEATURE_NAMES[0])
+    ].iloc[0]
+
+    assert benign_row["source_mean"] == 1.5
+    assert benign_row["external_mean"] == 3.5
+    assert phishing_row["source_mean"] == 15.0
+    assert phishing_row["external_mean"] == 35.0
