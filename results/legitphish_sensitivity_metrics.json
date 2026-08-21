@@ -1,0 +1,118 @@
+{
+  "analysis_type": "SECONDARY SENSITIVITY ANALYSIS",
+  "primary_legitphish_result_changed": false,
+  "deduplicated_exact_url_sensitivity": {
+    "raw_analysis_rows": 101218,
+    "duplicate_rows": 346,
+    "duplicate_url_rows": 346,
+    "conflicting_duplicate_url_values": 0,
+    "rows_with_conflicting_duplicate_url": 0,
+    "deduplicated_rows": 100872,
+    "class_counts": {
+      "phishing_label_0": 63492,
+      "legitimate_label_1": 37380
+    },
+    "metrics": {
+      "accuracy": 0.9953505432627489,
+      "phishing_precision": 0.9926674067009584,
+      "phishing_recall": 1.0,
+      "phishing_f1": 0.9963202121566381,
+      "roc_auc": 0.9940342429106473,
+      "pr_auc": 0.9930244924770871,
+      "balanced_accuracy": 0.9937265917602996,
+      "specificity": 0.9874531835205993,
+      "false_positive_rate": 0.012546816479400749,
+      "false_negative_rate": 0.0,
+      "confusion_matrix": [
+        [
+          63492,
+          0
+        ],
+        [
+          469,
+          36911
+        ]
+      ],
+      "true_phishing_predicted_phishing": 63492,
+      "true_phishing_predicted_legitimate": 0,
+      "true_legitimate_predicted_phishing": 469,
+      "true_legitimate_predicted_legitimate": 36911,
+      "confusion_matrix_order": "[[actual phishing -> predicted phishing, actual phishing -> predicted legitimate], [actual legitimate -> predicted phishing, actual legitimate -> predicted legitimate]]"
+    }
+  },
+  "cross_dataset_registrable_domain_overlap": {
+    "legitphish_registrable_domains": 62881,
+    "domains_also_present_in_phiusiil": 36515,
+    "domains_unseen_in_phiusiil": 26366,
+    "overlap_percentage": 58.07000524800814,
+    "seen_domain_rows": {
+      "row_count": 37840,
+      "class_counts": {
+        "phishing_label_0": 688,
+        "legitimate_label_1": 37152
+      },
+      "metrics": {
+        "accuracy": 0.9936310782241015,
+        "phishing_precision": 0.7405812701829925,
+        "phishing_recall": 1.0,
+        "phishing_f1": 0.8509585652442795,
+        "roc_auc": 0.997066106804479,
+        "pr_auc": 0.7593818984547461,
+        "balanced_accuracy": 0.9967565676141257,
+        "specificity": 0.9935131352282515,
+        "false_positive_rate": 0.0064868647717484925,
+        "false_negative_rate": 0.0,
+        "confusion_matrix": [
+          [
+            688,
+            0
+          ],
+          [
+            241,
+            36911
+          ]
+        ],
+        "true_phishing_predicted_phishing": 688,
+        "true_phishing_predicted_legitimate": 0,
+        "true_legitimate_predicted_phishing": 241,
+        "true_legitimate_predicted_legitimate": 36911,
+        "confusion_matrix_order": "[[actual phishing -> predicted phishing, actual phishing -> predicted legitimate], [actual legitimate -> predicted phishing, actual legitimate -> predicted legitimate]]"
+      }
+    },
+    "unseen_domain_rows": {
+      "row_count": 63378,
+      "class_counts": {
+        "phishing_label_0": 62990,
+        "legitimate_label_1": 388
+      },
+      "metrics": {
+        "accuracy": 0.9938780018302881,
+        "phishing_precision": 0.9938780018302881,
+        "phishing_recall": 1.0,
+        "phishing_f1": 0.9969296024309952,
+        "roc_auc": 0.5,
+        "pr_auc": 0.9938780018302881,
+        "balanced_accuracy": 0.5,
+        "specificity": 0.0,
+        "false_positive_rate": 1.0,
+        "false_negative_rate": 0.0,
+        "confusion_matrix": [
+          [
+            62990,
+            0
+          ],
+          [
+            388,
+            0
+          ]
+        ],
+        "true_phishing_predicted_phishing": 62990,
+        "true_phishing_predicted_legitimate": 0,
+        "true_legitimate_predicted_phishing": 388,
+        "true_legitimate_predicted_legitimate": 0,
+        "confusion_matrix_order": "[[actual phishing -> predicted phishing, actual phishing -> predicted legitimate], [actual legitimate -> predicted phishing, actual legitimate -> predicted legitimate]]"
+      }
+    }
+  },
+  "safety_statement": "Deduplication and domain overlap used local strings and offline registrable-domain parsing only; no URL was contacted."
+}

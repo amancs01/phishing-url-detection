@@ -1,0 +1,77 @@
+{
+  "dataset_name": "LegitPhish Dataset",
+  "dataset_version": 2,
+  "doi": "10.17632/hx4m73v2sf.2",
+  "external_rows": 101218,
+  "model_file": "D:\\Projects\\phishing-url-detection\\models\\optimized_decision_tree.joblib",
+  "same_frozen_model_as_url_phish": true,
+  "model_changed": false,
+  "external_training_performed": false,
+  "external_tuning_performed": false,
+  "threshold_changed": false,
+  "feature_names": [
+    "url_length",
+    "domain_length",
+    "path_length",
+    "query_length",
+    "number_of_dots",
+    "number_of_hyphens",
+    "number_of_underscores",
+    "number_of_slashes",
+    "number_of_question_marks",
+    "number_of_equal_signs",
+    "number_of_at_symbols",
+    "number_of_ampersands",
+    "number_of_percent_symbols",
+    "number_of_digits",
+    "number_of_letters",
+    "digit_ratio",
+    "letter_ratio",
+    "special_character_count",
+    "number_of_subdomains",
+    "domain_is_ip",
+    "uses_https_text",
+    "has_port",
+    "number_of_query_parameters",
+    "suspicious_keyword_count",
+    "has_suspicious_keyword",
+    "known_shortener_domain"
+  ],
+  "fixed_tree_params": {
+    "criterion": "entropy",
+    "max_depth": 10,
+    "min_samples_leaf": 1,
+    "min_samples_split": 2,
+    "ccp_alpha": 0.0,
+    "random_state": 42
+  },
+  "phishing_probability": "Probability column selected by locating project phishing label 0 inside model.classes_.",
+  "metrics": {
+    "accuracy": 0.9937856902922405,
+    "phishing_precision": 0.9902187942214689,
+    "phishing_recall": 1.0,
+    "phishing_f1": 0.9950853615658085,
+    "roc_auc": 0.9919286094832179,
+    "pr_auc": 0.990573081948852,
+    "balanced_accuracy": 0.9916222695791156,
+    "specificity": 0.9832445391582312,
+    "false_positive_rate": 0.01675546084176878,
+    "false_negative_rate": 0.0,
+    "confusion_matrix": [
+      [
+        63678,
+        0
+      ],
+      [
+        629,
+        36911
+      ]
+    ],
+    "true_phishing_predicted_phishing": 63678,
+    "true_phishing_predicted_legitimate": 0,
+    "true_legitimate_predicted_phishing": 629,
+    "true_legitimate_predicted_legitimate": 36911,
+    "confusion_matrix_order": "[[actual phishing -> predicted phishing, actual phishing -> predicted legitimate], [actual legitimate -> predicted phishing, actual legitimate -> predicted legitimate]]"
+  },
+  "safety_statement": "LegitPhish evaluation used the ignored local Tier E feature matrix; no dataset URL was opened, requested, resolved, or contacted."
+}

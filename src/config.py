@@ -51,6 +51,18 @@ LEGITPHISH_EXTERNAL_MATRIX_FILE = (
     LEGITPHISH_PROCESSED_DATA_DIRECTORY / "legitphish_v2_tier_e_features.csv"
 )
 LEGITPHISH_DATASET_SUMMARY_FILE = RESULTS_DIRECTORY / "legitphish_dataset_summary.json"
+LEGITPHISH_VALIDATION_METRICS_FILE = (
+    RESULTS_DIRECTORY / "legitphish_validation_metrics.json"
+)
+LEGITPHISH_SENSITIVITY_METRICS_FILE = (
+    RESULTS_DIRECTORY / "legitphish_sensitivity_metrics.json"
+)
+LEGITPHISH_CONFUSION_MATRIX_FIGURE = (
+    FIGURES_DIRECTORY / "legitphish_confusion_matrix.png"
+)
+THREE_DATASET_METRIC_COMPARISON_FIGURE = (
+    FIGURES_DIRECTORY / "three_dataset_metric_comparison.png"
+)
 EXTERNAL_VALIDATION_METRICS_FILE = (
     RESULTS_DIRECTORY / "external_validation_metrics.json"
 )
