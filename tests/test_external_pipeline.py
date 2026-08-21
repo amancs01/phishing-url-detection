@@ -11,6 +11,11 @@ from src.external_sensitivity_analysis import (
     metrics_for_predictions,
 )
 from src.analyze_class_conditional_shift import class_conditional_shift
+from src.run_dataset_origin_experiment import (
+    EXTERNAL_ORIGIN_LABEL,
+    INTERNAL_ORIGIN_LABEL,
+    build_origin_dataset,
+)
 from src.prepare_external_data import (
     TARGET_COLUMN,
     build_external_feature_matrix,
@@ -250,3 +255,37 @@ def test_class_conditional_shift_uses_correct_project_labels() -> None:
     assert benign_row["external_mean"] == 3.5
     assert phishing_row["source_mean"] == 15.0
     assert phishing_row["external_mean"] == 35.0
+
+
+def test_dataset_origin_labels_are_not_phishing_labels() -> None:
+    """Origin labels should encode source dataset, not phishing semantics."""
+
+    assert INTERNAL_ORIGIN_LABEL == 0
+    assert EXTERNAL_ORIGIN_LABEL == 1
+
+
+def test_origin_experiment_balances_source_classes() -> None:
+    """Origin diagnostics should downsample the larger source class."""
+
+    internal = pd.DataFrame(
+        {
+            **{feature: [1, 2, 3, 4] for feature in FEATURE_NAMES},
+            "label": [1, 1, 1, 0],
+        }
+    )
+    external = pd.DataFrame(
+        {
+            **{feature: [5, 6] for feature in FEATURE_NAMES},
+            "target": [1, 1],
+        }
+    )
+
+    x, y, counts = build_origin_dataset(internal, external, semantic_label=1)
+
+    assert len(x) == 4
+    assert y.value_counts().to_dict() == {
+        INTERNAL_ORIGIN_LABEL: 2,
+        EXTERNAL_ORIGIN_LABEL: 2,
+    }
+    assert counts["balanced_internal_rows"] == 2
+    assert counts["balanced_external_rows"] == 2
