@@ -1,0 +1,145 @@
+{
+  "analysis_type": "POST-HOC DIAGNOSTIC ANALYSIS",
+  "primary_external_result_changed": false,
+  "deduplicated_exact_url_sensitivity": {
+    "raw_rows": 116600,
+    "duplicate_rows": 1369,
+    "duplicate_url_rows": 1369,
+    "conflicting_duplicate_url_values": 0,
+    "rows_with_conflicting_duplicate_url": 0,
+    "deduplicated_rows": 115231,
+    "project_class_counts": {
+      "phishing_label_0": 16590,
+      "legitimate_label_1": 98641
+    },
+    "metrics": {
+      "accuracy": 0.1982626203018285,
+      "phishing_precision": 0.15091697908127077,
+      "phishing_recall": 0.9875828812537674,
+      "phishing_f1": 0.26182352800172587,
+      "roc_auc": 0.5247263597400181,
+      "pr_auc": 0.1503328768563339,
+      "balanced_accuracy": 0.526546583011896,
+      "confusion_matrix": [
+        [
+          16384,
+          206
+        ],
+        [
+          92179,
+          6462
+        ]
+      ],
+      "true_phishing_predicted_phishing": 16384,
+      "true_phishing_predicted_legitimate": 206,
+      "true_legitimate_predicted_phishing": 92179,
+      "true_legitimate_predicted_legitimate": 6462,
+      "confusion_matrix_order": "[[actual phishing -> predicted phishing, actual phishing -> predicted legitimate], [actual legitimate -> predicted phishing, actual legitimate -> predicted legitimate]]"
+    },
+    "primary_external_metrics_for_reference": {
+      "accuracy": 0.19650943396226414,
+      "phishing_precision": 0.14920591581342435,
+      "phishing_recall": 0.9875903614457832,
+      "phishing_f1": 0.2592449100612769,
+      "roc_auc": 0.5245679499999999,
+      "pr_auc": 0.14862740181402137,
+      "balanced_accuracy": 0.5263901807228916,
+      "confusion_matrix": [
+        [
+          16394,
+          206
+        ],
+        [
+          93481,
+          6519
+        ]
+      ],
+      "true_phishing_predicted_phishing": 16394,
+      "true_phishing_predicted_legitimate": 206,
+      "true_legitimate_predicted_phishing": 93481,
+      "true_legitimate_predicted_legitimate": 6519,
+      "confusion_matrix_order": "[[actual phishing -> predicted phishing, actual phishing -> predicted legitimate], [actual legitimate -> predicted phishing, actual legitimate -> predicted legitimate]]"
+    },
+    "metric_differences_deduplicated_minus_primary": {
+      "accuracy": 0.0017531863395643665,
+      "phishing_precision": 0.0017110632678464244,
+      "phishing_recall": -7.480192015796305e-06,
+      "phishing_f1": 0.002578617940448946,
+      "roc_auc": 0.00015840974001823938,
+      "balanced_accuracy": 0.00015640228900448694
+    }
+  },
+  "cross_dataset_registrable_domain_overlap": {
+    "url_phish_registrable_domains": 91683,
+    "domains_also_present_in_phiusiil": 7149,
+    "domains_unseen_in_phiusiil": 84534,
+    "overlap_percentage": 7.797519714669023,
+    "seen_domain_rows": {
+      "row_count": 22326,
+      "project_class_counts": {
+        "phishing_label_0": 9436,
+        "legitimate_label_1": 12890
+      },
+      "metrics": {
+        "accuracy": 0.48181492430350265,
+        "phishing_precision": 0.44877767638441957,
+        "phishing_recall": 0.9902501059771089,
+        "phishing_f1": 0.6176421984995207,
+        "roc_auc": 0.548833421414644,
+        "pr_auc": 0.4479154212340276,
+        "balanced_accuracy": 0.5499349831669874,
+        "confusion_matrix": [
+          [
+            9344,
+            92
+          ],
+          [
+            11477,
+            1413
+          ]
+        ],
+        "true_phishing_predicted_phishing": 9344,
+        "true_phishing_predicted_legitimate": 92,
+        "true_legitimate_predicted_phishing": 11477,
+        "true_legitimate_predicted_legitimate": 1413,
+        "confusion_matrix_order": "[[actual phishing -> predicted phishing, actual phishing -> predicted legitimate], [actual legitimate -> predicted phishing, actual legitimate -> predicted legitimate]]"
+      }
+    },
+    "unseen_domain_rows": {
+      "row_count": 94274,
+      "project_class_counts": {
+        "phishing_label_0": 7164,
+        "legitimate_label_1": 87110
+      },
+      "metrics": {
+        "accuracy": 0.1289432929545792,
+        "phishing_precision": 0.07916545017629753,
+        "phishing_recall": 0.9840871021775545,
+        "phishing_f1": 0.14654222702612818,
+        "roc_auc": 0.5191991283346925,
+        "pr_auc": 0.07878258804241972,
+        "balanced_accuracy": 0.5213513228715806,
+        "confusion_matrix": [
+          [
+            7050,
+            114
+          ],
+          [
+            82004,
+            5106
+          ]
+        ],
+        "true_phishing_predicted_phishing": 7050,
+        "true_phishing_predicted_legitimate": 114,
+        "true_legitimate_predicted_phishing": 82004,
+        "true_legitimate_predicted_legitimate": 5106,
+        "confusion_matrix_order": "[[actual phishing -> predicted phishing, actual phishing -> predicted legitimate], [actual legitimate -> predicted phishing, actual legitimate -> predicted legitimate]]"
+      }
+    }
+  },
+  "source_category_diagnostics": {
+    "available": false,
+    "reason": "URL-Phish Version 2 contains url, dom, tld, numerical features, and label columns, but no reliable source/category metadata."
+  },
+  "safety_statement": "Exact URL and registrable-domain grouping used local strings and offline publicsuffix2 parsing only; no URL was opened, requested, resolved, or contacted."
+}

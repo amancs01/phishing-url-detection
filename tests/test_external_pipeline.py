@@ -16,6 +16,10 @@ from src.run_dataset_origin_experiment import (
     INTERNAL_ORIGIN_LABEL,
     build_origin_dataset,
 )
+from src.external_overlap_sensitivity import (
+    conflicting_duplicate_urls,
+    deduplicated_row_indices,
+)
 from src.prepare_external_data import (
     TARGET_COLUMN,
     build_external_feature_matrix,
@@ -289,3 +293,22 @@ def test_origin_experiment_balances_source_classes() -> None:
     }
     assert counts["balanced_internal_rows"] == 2
     assert counts["balanced_external_rows"] == 2
+
+
+def test_duplicate_conflict_handling_excludes_ambiguous_urls() -> None:
+    """Deduplication sensitivity should not choose among conflicting labels."""
+
+    raw = pd.DataFrame(
+        {
+            "url": ["safe-a", "safe-a", "safe-b", "safe-b", "safe-c"],
+            "label": [0, 1, 1, 1, 0],
+        }
+    )
+
+    conflicts = conflicting_duplicate_urls(raw)
+    kept_indices, diagnostics = deduplicated_row_indices(raw)
+
+    assert conflicts == {"safe-a"}
+    assert kept_indices == [2, 4]
+    assert diagnostics["conflicting_duplicate_url_values"] == 1
+    assert diagnostics["rows_with_conflicting_duplicate_url"] == 2
