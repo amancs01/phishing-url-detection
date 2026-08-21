@@ -1,0 +1,243 @@
+{
+  "analysis_type": "FINAL DATA-INTEGRITY AUDIT",
+  "normalization": {
+    "exact_url_key": "strip_url(url)",
+    "normalized_url_key": "strip_url(url).lower()",
+    "registrable_domain_key": "extract_registrable_domain(url) using local publicsuffix2 parsing"
+  },
+  "pairwise_overlap": [
+    {
+      "external_dataset": "URL-Phish",
+      "row_counts": {
+        "phiusiil": 235795,
+        "external": 116600
+      },
+      "class_counts": {
+        "phiusiil": {
+          "total": 235795,
+          "phishing": 100945,
+          "legitimate": 134850,
+          "phishing_proportion": 0.42810492164804176,
+          "legitimate_proportion": 0.5718950783519583
+        },
+        "external": {
+          "total": 116600,
+          "phishing": 16600,
+          "legitimate": 100000,
+          "phishing_proportion": 0.1423670668953688,
+          "legitimate_proportion": 0.8576329331046312
+        }
+      },
+      "exact_url_overlap": {
+        "unique_phiusiil_keys": 235370,
+        "unique_external_keys": 115231,
+        "unique_shared_keys": 595,
+        "phiusiil_rows_with_shared_key": 595,
+        "external_rows_with_shared_key": 604,
+        "overlap_percentage_of_phiusiil_keys": 0.2527934741046013,
+        "overlap_percentage_of_external_keys": 0.516354106099921,
+        "class_conditional_same_label_overlap": {
+          "phiusiil_phishing_external_phishing": {
+            "unique_shared_keys": 0,
+            "phiusiil_rows_with_shared_key": 0,
+            "external_rows_with_shared_key": 0
+          },
+          "phiusiil_legitimate_external_legitimate": {
+            "unique_shared_keys": 595,
+            "phiusiil_rows_with_shared_key": 595,
+            "external_rows_with_shared_key": 604
+          }
+        },
+        "cross_label_conflicts": {
+          "shared_keys_with_any_cross_label_conflict": 0,
+          "phiusiil_phishing_external_legitimate_keys": 0,
+          "phiusiil_legitimate_external_phishing_keys": 0
+        }
+      },
+      "normalized_url_overlap": {
+        "unique_phiusiil_keys": 235370,
+        "unique_external_keys": 115227,
+        "unique_shared_keys": 595,
+        "phiusiil_rows_with_shared_key": 595,
+        "external_rows_with_shared_key": 604,
+        "overlap_percentage_of_phiusiil_keys": 0.2527934741046013,
+        "overlap_percentage_of_external_keys": 0.5163720308608226,
+        "class_conditional_same_label_overlap": {
+          "phiusiil_phishing_external_phishing": {
+            "unique_shared_keys": 0,
+            "phiusiil_rows_with_shared_key": 0,
+            "external_rows_with_shared_key": 0
+          },
+          "phiusiil_legitimate_external_legitimate": {
+            "unique_shared_keys": 595,
+            "phiusiil_rows_with_shared_key": 595,
+            "external_rows_with_shared_key": 604
+          }
+        },
+        "cross_label_conflicts": {
+          "shared_keys_with_any_cross_label_conflict": 0,
+          "phiusiil_phishing_external_legitimate_keys": 0,
+          "phiusiil_legitimate_external_phishing_keys": 0
+        }
+      },
+      "registrable_domain_overlap": {
+        "unique_phiusiil_keys": 194036,
+        "unique_external_keys": 91683,
+        "unique_shared_keys": 7149,
+        "phiusiil_rows_with_shared_key": 23858,
+        "external_rows_with_shared_key": 22326,
+        "overlap_percentage_of_phiusiil_keys": 3.684367849265085,
+        "overlap_percentage_of_external_keys": 7.797519714669023,
+        "class_conditional_same_label_overlap": {
+          "phiusiil_phishing_external_phishing": {
+            "unique_shared_keys": 176,
+            "phiusiil_rows_with_shared_key": 14488,
+            "external_rows_with_shared_key": 9388
+          },
+          "phiusiil_legitimate_external_legitimate": {
+            "unique_shared_keys": 6915,
+            "phiusiil_rows_with_shared_key": 9160,
+            "external_rows_with_shared_key": 12759
+          }
+        },
+        "cross_label_conflicts": {
+          "shared_keys_with_any_cross_label_conflict": 97,
+          "phiusiil_phishing_external_legitimate_keys": 80,
+          "phiusiil_legitimate_external_phishing_keys": 19
+        }
+      }
+    },
+    {
+      "external_dataset": "LegitPhish",
+      "row_counts": {
+        "phiusiil": 235795,
+        "external": 101218
+      },
+      "class_counts": {
+        "phiusiil": {
+          "total": 235795,
+          "phishing": 100945,
+          "legitimate": 134850,
+          "phishing_proportion": 0.42810492164804176,
+          "legitimate_proportion": 0.5718950783519583
+        },
+        "external": {
+          "total": 101218,
+          "phishing": 63678,
+          "legitimate": 37540,
+          "phishing_proportion": 0.6291173506688533,
+          "legitimate_proportion": 0.3708826493311466
+        }
+      },
+      "exact_url_overlap": {
+        "unique_phiusiil_keys": 235370,
+        "unique_external_keys": 100872,
+        "unique_shared_keys": 36935,
+        "phiusiil_rows_with_shared_key": 36935,
+        "external_rows_with_shared_key": 36935,
+        "overlap_percentage_of_phiusiil_keys": 15.692314228661255,
+        "overlap_percentage_of_external_keys": 36.61571100007931,
+        "class_conditional_same_label_overlap": {
+          "phiusiil_phishing_external_phishing": {
+            "unique_shared_keys": 0,
+            "phiusiil_rows_with_shared_key": 0,
+            "external_rows_with_shared_key": 0
+          },
+          "phiusiil_legitimate_external_legitimate": {
+            "unique_shared_keys": 36935,
+            "phiusiil_rows_with_shared_key": 36935,
+            "external_rows_with_shared_key": 36935
+          }
+        },
+        "cross_label_conflicts": {
+          "shared_keys_with_any_cross_label_conflict": 0,
+          "phiusiil_phishing_external_legitimate_keys": 0,
+          "phiusiil_legitimate_external_phishing_keys": 0
+        }
+      },
+      "normalized_url_overlap": {
+        "unique_phiusiil_keys": 235370,
+        "unique_external_keys": 100872,
+        "unique_shared_keys": 36935,
+        "phiusiil_rows_with_shared_key": 36935,
+        "external_rows_with_shared_key": 36935,
+        "overlap_percentage_of_phiusiil_keys": 15.692314228661255,
+        "overlap_percentage_of_external_keys": 36.61571100007931,
+        "class_conditional_same_label_overlap": {
+          "phiusiil_phishing_external_phishing": {
+            "unique_shared_keys": 0,
+            "phiusiil_rows_with_shared_key": 0,
+            "external_rows_with_shared_key": 0
+          },
+          "phiusiil_legitimate_external_legitimate": {
+            "unique_shared_keys": 36935,
+            "phiusiil_rows_with_shared_key": 36935,
+            "external_rows_with_shared_key": 36935
+          }
+        },
+        "cross_label_conflicts": {
+          "shared_keys_with_any_cross_label_conflict": 0,
+          "phiusiil_phishing_external_legitimate_keys": 0,
+          "phiusiil_legitimate_external_phishing_keys": 0
+        }
+      },
+      "registrable_domain_overlap": {
+        "unique_phiusiil_keys": 194036,
+        "unique_external_keys": 62881,
+        "unique_shared_keys": 36515,
+        "phiusiil_rows_with_shared_key": 50808,
+        "external_rows_with_shared_key": 37840,
+        "overlap_percentage_of_phiusiil_keys": 18.818672823599744,
+        "overlap_percentage_of_external_keys": 58.07000524800814,
+        "class_conditional_same_label_overlap": {
+          "phiusiil_phishing_external_phishing": {
+            "unique_shared_keys": 67,
+            "phiusiil_rows_with_shared_key": 11907,
+            "external_rows_with_shared_key": 675
+          },
+          "phiusiil_legitimate_external_legitimate": {
+            "unique_shared_keys": 36441,
+            "phiusiil_rows_with_shared_key": 38799,
+            "external_rows_with_shared_key": 37136
+          }
+        },
+        "cross_label_conflicts": {
+          "shared_keys_with_any_cross_label_conflict": 41,
+          "phiusiil_phishing_external_legitimate_keys": 36,
+          "phiusiil_legitimate_external_phishing_keys": 5
+        }
+      }
+    }
+  ],
+  "legitphish_seen_unseen_composition": {
+    "seen_domain_subset": {
+      "class_composition": {
+        "total": 37840,
+        "phishing": 688,
+        "legitimate": 37152,
+        "phishing_proportion": 0.01818181818181818,
+        "legitimate_proportion": 0.9818181818181818
+      },
+      "predictions_by_class": {
+        "predicted_phishing": 929,
+        "predicted_legitimate": 36911
+      }
+    },
+    "unseen_domain_subset": {
+      "class_composition": {
+        "total": 63378,
+        "phishing": 62990,
+        "legitimate": 388,
+        "phishing_proportion": 0.9938780018302881,
+        "legitimate_proportion": 0.006121998169711888
+      },
+      "predictions_by_class": {
+        "predicted_phishing": 63378,
+        "predicted_legitimate": 0
+      }
+    },
+    "unseen_domain_metric_note": "The prior unseen-domain ROC-AUC of 0.5 was a valid two-class calculation, not a single-class fallback: the subset contained both phishing and legitimate rows, but the frozen model assigned all unseen-domain rows to the phishing class."
+  },
+  "raw_values_committed": false,
+  "safety_statement": "All overlap keys were computed from local strings with local parsing only; no URL was opened, requested, resolved, scraped, or contacted."
+}

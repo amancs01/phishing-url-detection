@@ -93,6 +93,12 @@ BENIGN_SHIFT_ACROSS_DATASETS_FIGURE = (
 PHISHING_SHIFT_ACROSS_DATASETS_FIGURE = (
     FIGURES_DIRECTORY / "phishing_shift_across_datasets.png"
 )
+CROSS_DATASET_OVERLAP_SUMMARY_FILE = (
+    RESULTS_DIRECTORY / "cross_dataset_overlap_summary.json"
+)
+OVERLAP_CONTROLLED_VALIDATION_FILE = (
+    RESULTS_DIRECTORY / "overlap_controlled_validation.json"
+)
 
 
 # Model settings
