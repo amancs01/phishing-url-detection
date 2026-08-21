@@ -41,6 +41,9 @@ data/raw/*
 data/processed/*
 !data/processed/.gitkeep
 
+data/external/raw/*
+data/external/processed/*
+
 # Generated model files
 models/*.joblib
 !models/optimized_decision_tree.joblib

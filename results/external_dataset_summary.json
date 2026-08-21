@@ -1,0 +1,98 @@
+{
+  "dataset_name": "URL-Phish: A Feature-Engineered Dataset for Phishing Detection",
+  "dataset_version": 2,
+  "doi": "10.17632/65z9twcx3r.2",
+  "source": "Official Mendeley Data Version 2 CSV",
+  "total_rows": 116600,
+  "url_column": "url",
+  "label_column": "label",
+  "url_phish_label_semantics": {
+    "0": "benign",
+    "1": "phishing"
+  },
+  "project_label_semantics": {
+    "0": "phishing",
+    "1": "legitimate"
+  },
+  "label_mapping": {
+    "url_phish_1": "project_0_phishing",
+    "url_phish_0": "project_1_legitimate"
+  },
+  "url_phish_class_counts": {
+    "benign_label_0": 100000,
+    "phishing_label_1": 16600
+  },
+  "normalized_project_class_counts": {
+    "phishing_label_0": 16600,
+    "legitimate_label_1": 100000
+  },
+  "benign_count": 100000,
+  "phishing_count": 16600,
+  "missing_rows": {
+    "url_missing": 0,
+    "label_missing": 0,
+    "any_missing_in_source_row": 14,
+    "any_missing_in_external_matrix_row": 0
+  },
+  "duplicate_rows": 1369,
+  "duplicate_url_rows": 1369,
+  "feature_count": 26,
+  "feature_names": [
+    "url_length",
+    "domain_length",
+    "path_length",
+    "query_length",
+    "number_of_dots",
+    "number_of_hyphens",
+    "number_of_underscores",
+    "number_of_slashes",
+    "number_of_question_marks",
+    "number_of_equal_signs",
+    "number_of_at_symbols",
+    "number_of_ampersands",
+    "number_of_percent_symbols",
+    "number_of_digits",
+    "number_of_letters",
+    "digit_ratio",
+    "letter_ratio",
+    "special_character_count",
+    "number_of_subdomains",
+    "domain_is_ip",
+    "uses_https_text",
+    "has_port",
+    "number_of_query_parameters",
+    "suspicious_keyword_count",
+    "has_suspicious_keyword",
+    "known_shortener_domain"
+  ],
+  "used_source_columns_for_features": [
+    "url"
+  ],
+  "ignored_url_phish_supplied_feature_columns": [
+    "url_len",
+    "dom",
+    "dom_len",
+    "is_ip",
+    "tld",
+    "tld_len",
+    "subdom_cnt",
+    "letter_cnt",
+    "digit_cnt",
+    "special_cnt",
+    "eq_cnt",
+    "qm_cnt",
+    "amp_cnt",
+    "dot_cnt",
+    "dash_cnt",
+    "under_cnt",
+    "letter_ratio",
+    "digit_ratio",
+    "spec_ratio",
+    "is_https",
+    "slash_cnt",
+    "entropy",
+    "path_len",
+    "query_len"
+  ],
+  "safety_statement": "External URL strings were parsed locally with extract_url_features; no dataset URL was opened, requested, resolved, or contacted."
+}

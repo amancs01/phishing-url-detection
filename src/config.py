@@ -9,6 +9,9 @@ PROJECT_ROOT = Path(__file__).resolve().parent.parent
 DATA_DIRECTORY = PROJECT_ROOT / "data"
 RAW_DATA_DIRECTORY = DATA_DIRECTORY / "raw"
 PROCESSED_DATA_DIRECTORY = DATA_DIRECTORY / "processed"
+EXTERNAL_DATA_DIRECTORY = DATA_DIRECTORY / "external"
+EXTERNAL_RAW_DATA_DIRECTORY = EXTERNAL_DATA_DIRECTORY / "raw"
+EXTERNAL_PROCESSED_DATA_DIRECTORY = EXTERNAL_DATA_DIRECTORY / "processed"
 
 MODEL_DIRECTORY = PROJECT_ROOT / "models"
 RESULTS_DIRECTORY = PROJECT_ROOT / "results"
@@ -23,6 +26,20 @@ RAW_DATA_FILE = RAW_DATA_DIRECTORY / "phiusil_raw.csv"
 PROCESSED_DATA_FILE = PROCESSED_DATA_DIRECTORY / "phiusil_url_features.csv"
 DATASET_SCHEMA_FILE = RESULTS_DIRECTORY / "dataset_schema.json"
 DATA_VALIDATION_FILE = RESULTS_DIRECTORY / "data_validation.json"
+
+
+# External validation settings
+URL_PHISH_DATASET_ID = "65z9twcx3r"
+URL_PHISH_VERSION = 2
+URL_PHISH_DOI = "10.17632/65z9twcx3r.2"
+URL_PHISH_DATASET_NAME = (
+    "URL-Phish: A Feature-Engineered Dataset for Phishing Detection"
+)
+URL_PHISH_RAW_FILE = EXTERNAL_RAW_DATA_DIRECTORY / "url_phish_v2_dataset.csv"
+URL_PHISH_EXTERNAL_MATRIX_FILE = (
+    EXTERNAL_PROCESSED_DATA_DIRECTORY / "url_phish_v2_tier_e_features.csv"
+)
+EXTERNAL_DATASET_SUMMARY_FILE = RESULTS_DIRECTORY / "external_dataset_summary.json"
 
 
 # Model settings
@@ -58,6 +75,8 @@ def create_project_directories() -> None:
     directories = [
         RAW_DATA_DIRECTORY,
         PROCESSED_DATA_DIRECTORY,
+        EXTERNAL_RAW_DATA_DIRECTORY,
+        EXTERNAL_PROCESSED_DATA_DIRECTORY,
         MODEL_DIRECTORY,
         RESULTS_DIRECTORY,
         REPORTS_DIRECTORY,
