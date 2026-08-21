@@ -1,0 +1,625 @@
+{
+  "fixed_tree_params": {
+    "criterion": "entropy",
+    "max_depth": 10,
+    "min_samples_leaf": 1,
+    "min_samples_split": 2,
+    "ccp_alpha": 0.0,
+    "random_state": 42
+  },
+  "tree_depth": 4,
+  "number_of_leaves": 5,
+  "root_feature": "URLSimilarityIndex",
+  "used_features": [
+    "URLSimilarityIndex",
+    "IsHTTPS",
+    "LineOfCode",
+    "NoOfSubDomain"
+  ],
+  "node_count": 9,
+  "nodes": [
+    {
+      "node_id": 0,
+      "is_leaf": false,
+      "feature": "URLSimilarityIndex",
+      "threshold": 98.50222396850586,
+      "left_child": 1,
+      "right_child": 2,
+      "impurity": 0.9850331532903607,
+      "sample_count": 165056,
+      "weighted_sample_count": 165056.0,
+      "class_counts_by_model_class_order": [
+        0.4281031892206282,
+        0.5718968107793718
+      ],
+      "model_class_order": [
+        0,
+        1
+      ],
+      "predicted_class": 1
+    },
+    {
+      "node_id": 1,
+      "is_leaf": true,
+      "feature": null,
+      "threshold": null,
+      "left_child": null,
+      "right_child": null,
+      "impurity": 0.0,
+      "sample_count": 70126,
+      "weighted_sample_count": 70126.0,
+      "class_counts_by_model_class_order": [
+        1.0,
+        0.0
+      ],
+      "model_class_order": [
+        0,
+        1
+      ],
+      "predicted_class": 0
+    },
+    {
+      "node_id": 2,
+      "is_leaf": false,
+      "feature": "IsHTTPS",
+      "threshold": 0.5,
+      "left_child": 3,
+      "right_child": 4,
+      "impurity": 0.05021326073775291,
+      "sample_count": 94930,
+      "weighted_sample_count": 94930.0,
+      "class_counts_by_model_class_order": [
+        0.005635731591699147,
+        0.9943642684083008
+      ],
+      "model_class_order": [
+        0,
+        1
+      ],
+      "predicted_class": 1
+    },
+    {
+      "node_id": 3,
+      "is_leaf": true,
+      "feature": null,
+      "threshold": null,
+      "left_child": null,
+      "right_child": null,
+      "impurity": 0.0,
+      "sample_count": 519,
+      "weighted_sample_count": 519.0,
+      "class_counts_by_model_class_order": [
+        1.0,
+        0.0
+      ],
+      "model_class_order": [
+        0,
+        1
+      ],
+      "predicted_class": 0
+    },
+    {
+      "node_id": 4,
+      "is_leaf": false,
+      "feature": "LineOfCode",
+      "threshold": 67.5,
+      "left_child": 5,
+      "right_child": 6,
+      "impurity": 0.002367391956603299,
+      "sample_count": 94411,
+      "weighted_sample_count": 94411.0,
+      "class_counts_by_model_class_order": [
+        0.00016947177765302772,
+        0.999830528222347
+      ],
+      "model_class_order": [
+        0,
+        1
+      ],
+      "predicted_class": 1
+    },
+    {
+      "node_id": 5,
+      "is_leaf": true,
+      "feature": null,
+      "threshold": null,
+      "left_child": null,
+      "right_child": null,
+      "impurity": 0.0,
+      "sample_count": 14,
+      "weighted_sample_count": 14.0,
+      "class_counts_by_model_class_order": [
+        1.0,
+        0.0
+      ],
+      "model_class_order": [
+        0,
+        1
+      ],
+      "predicted_class": 0
+    },
+    {
+      "node_id": 6,
+      "is_leaf": false,
+      "feature": "NoOfSubDomain",
+      "threshold": 0.5,
+      "left_child": 7,
+      "right_child": 8,
+      "impurity": 0.0003595269584320546,
+      "sample_count": 94397,
+      "weighted_sample_count": 94397.0,
+      "class_counts_by_model_class_order": [
+        2.1187113997266863e-05,
+        0.9999788128860028
+      ],
+      "model_class_order": [
+        0,
+        1
+      ],
+      "predicted_class": 1
+    },
+    {
+      "node_id": 7,
+      "is_leaf": true,
+      "feature": null,
+      "threshold": null,
+      "left_child": null,
+      "right_child": null,
+      "impurity": 0.0,
+      "sample_count": 2,
+      "weighted_sample_count": 2.0,
+      "class_counts_by_model_class_order": [
+        1.0,
+        0.0
+      ],
+      "model_class_order": [
+        0,
+        1
+      ],
+      "predicted_class": 0
+    },
+    {
+      "node_id": 8,
+      "is_leaf": true,
+      "feature": null,
+      "threshold": null,
+      "left_child": null,
+      "right_child": null,
+      "impurity": 0.0,
+      "sample_count": 94395,
+      "weighted_sample_count": 94395.0,
+      "class_counts_by_model_class_order": [
+        0.0,
+        1.0
+      ],
+      "model_class_order": [
+        0,
+        1
+      ],
+      "predicted_class": 1
+    }
+  ],
+  "tree_rules_text": "|--- URLSimilarityIndex <= 98.502224\n|   |--- class: 0\n|--- URLSimilarityIndex >  98.502224\n|   |--- IsHTTPS <= 0.500000\n|   |   |--- class: 0\n|   |--- IsHTTPS >  0.500000\n|   |   |--- LineOfCode <= 67.500000\n|   |   |   |--- class: 0\n|   |   |--- LineOfCode >  67.500000\n|   |   |   |--- NoOfSubDomain <= 0.500000\n|   |   |   |   |--- class: 0\n|   |   |   |--- NoOfSubDomain >  0.500000\n|   |   |   |   |--- class: 1\n",
+  "feature_importances": [
+    {
+      "feature": "URLSimilarityIndex",
+      "importance": 0.9706816354015096
+    },
+    {
+      "feature": "IsHTTPS",
+      "importance": 0.027943656150640712
+    },
+    {
+      "feature": "LineOfCode",
+      "importance": 0.0011659675779066292
+    },
+    {
+      "feature": "NoOfSubDomain",
+      "importance": 0.00020874086994295533
+    },
+    {
+      "feature": "Bank",
+      "importance": 0.0
+    },
+    {
+      "feature": "CharContinuationRate",
+      "importance": 0.0
+    },
+    {
+      "feature": "Crypto",
+      "importance": 0.0
+    },
+    {
+      "feature": "DegitRatioInURL",
+      "importance": 0.0
+    },
+    {
+      "feature": "DomainLength",
+      "importance": 0.0
+    },
+    {
+      "feature": "DomainTitleMatchScore",
+      "importance": 0.0
+    },
+    {
+      "feature": "HasCopyrightInfo",
+      "importance": 0.0
+    },
+    {
+      "feature": "HasDescription",
+      "importance": 0.0
+    },
+    {
+      "feature": "HasExternalFormSubmit",
+      "importance": 0.0
+    },
+    {
+      "feature": "HasFavicon",
+      "importance": 0.0
+    },
+    {
+      "feature": "HasHiddenFields",
+      "importance": 0.0
+    },
+    {
+      "feature": "HasObfuscation",
+      "importance": 0.0
+    },
+    {
+      "feature": "HasPasswordField",
+      "importance": 0.0
+    },
+    {
+      "feature": "HasSocialNet",
+      "importance": 0.0
+    },
+    {
+      "feature": "HasSubmitButton",
+      "importance": 0.0
+    },
+    {
+      "feature": "HasTitle",
+      "importance": 0.0
+    },
+    {
+      "feature": "IsDomainIP",
+      "importance": 0.0
+    },
+    {
+      "feature": "IsResponsive",
+      "importance": 0.0
+    },
+    {
+      "feature": "LargestLineLength",
+      "importance": 0.0
+    },
+    {
+      "feature": "LetterRatioInURL",
+      "importance": 0.0
+    },
+    {
+      "feature": "NoOfAmpersandInURL",
+      "importance": 0.0
+    },
+    {
+      "feature": "NoOfCSS",
+      "importance": 0.0
+    },
+    {
+      "feature": "NoOfDegitsInURL",
+      "importance": 0.0
+    },
+    {
+      "feature": "NoOfEmptyRef",
+      "importance": 0.0
+    },
+    {
+      "feature": "NoOfEqualsInURL",
+      "importance": 0.0
+    },
+    {
+      "feature": "NoOfExternalRef",
+      "importance": 0.0
+    },
+    {
+      "feature": "NoOfImage",
+      "importance": 0.0
+    },
+    {
+      "feature": "NoOfJS",
+      "importance": 0.0
+    },
+    {
+      "feature": "NoOfLettersInURL",
+      "importance": 0.0
+    },
+    {
+      "feature": "NoOfObfuscatedChar",
+      "importance": 0.0
+    },
+    {
+      "feature": "NoOfOtherSpecialCharsInURL",
+      "importance": 0.0
+    },
+    {
+      "feature": "NoOfPopup",
+      "importance": 0.0
+    },
+    {
+      "feature": "NoOfQMarkInURL",
+      "importance": 0.0
+    },
+    {
+      "feature": "NoOfSelfRedirect",
+      "importance": 0.0
+    },
+    {
+      "feature": "NoOfSelfRef",
+      "importance": 0.0
+    },
+    {
+      "feature": "NoOfURLRedirect",
+      "importance": 0.0
+    },
+    {
+      "feature": "NoOfiFrame",
+      "importance": 0.0
+    },
+    {
+      "feature": "ObfuscationRatio",
+      "importance": 0.0
+    },
+    {
+      "feature": "Pay",
+      "importance": 0.0
+    },
+    {
+      "feature": "Robots",
+      "importance": 0.0
+    },
+    {
+      "feature": "SpacialCharRatioInURL",
+      "importance": 0.0
+    },
+    {
+      "feature": "TLDLegitimateProb",
+      "importance": 0.0
+    },
+    {
+      "feature": "TLDLength",
+      "importance": 0.0
+    },
+    {
+      "feature": "URLCharProb",
+      "importance": 0.0
+    },
+    {
+      "feature": "URLLength",
+      "importance": 0.0
+    },
+    {
+      "feature": "URLTitleMatchScore",
+      "importance": 0.0
+    }
+  ],
+  "used_feature_provenance": {
+    "URLSimilarityIndex": {
+      "data_type": "float64",
+      "role": "feature",
+      "provenance_category": "C URL-derived but external/reference/unavailable stats",
+      "directly_reproducible": false,
+      "requires_raw_url": true,
+      "requires_reference_corpus": true,
+      "requires_webpage_content": false,
+      "requires_network_access": false,
+      "included_in_deployment_model": false,
+      "confidence": "medium",
+      "evidence_or_reason": "Official metadata documents this as a derived URL-oriented feature; similarity scoring requires an unspecified comparison convention or reference and is not computable from one URL alone."
+    },
+    "IsHTTPS": {
+      "data_type": "int64",
+      "role": "feature",
+      "provenance_category": "B directly computable raw URL text",
+      "directly_reproducible": true,
+      "requires_raw_url": true,
+      "requires_reference_corpus": false,
+      "requires_webpage_content": false,
+      "requires_network_access": false,
+      "included_in_deployment_model": false,
+      "confidence": "high",
+      "evidence_or_reason": "Can be computed from URL scheme text without certificate or network inspection."
+    },
+    "LineOfCode": {
+      "data_type": "int64",
+      "role": "feature",
+      "provenance_category": "D webpage/content-derived",
+      "directly_reproducible": false,
+      "requires_raw_url": false,
+      "requires_reference_corpus": false,
+      "requires_webpage_content": true,
+      "requires_network_access": true,
+      "included_in_deployment_model": false,
+      "confidence": "high",
+      "evidence_or_reason": "Requires fetched webpage source code; not reconstructible from raw URL text only."
+    },
+    "NoOfSubDomain": {
+      "data_type": "int64",
+      "role": "feature",
+      "provenance_category": "B directly computable raw URL text",
+      "directly_reproducible": true,
+      "requires_raw_url": true,
+      "requires_reference_corpus": false,
+      "requires_webpage_content": false,
+      "requires_network_access": false,
+      "included_in_deployment_model": false,
+      "confidence": "medium",
+      "evidence_or_reason": "Subdomain count can be estimated locally from hostname labels; exact registered-domain rule may differ."
+    }
+  },
+  "used_feature_stats_by_class": {
+    "URLSimilarityIndex": {
+      "phishing": {
+        "mean": 49.61697250897354,
+        "median": 51.41933166,
+        "std": 22.57208178127457,
+        "min": 0.155574352,
+        "q05": 11.02507913,
+        "q25": 32.12061295,
+        "q75": 67.25146199,
+        "q95": 83.47107438,
+        "max": 100.0
+      },
+      "legitimate": {
+        "mean": 100.0,
+        "median": 100.0,
+        "std": 0.0,
+        "min": 100.0,
+        "q05": 100.0,
+        "q25": 100.0,
+        "q75": 100.0,
+        "q95": 100.0,
+        "max": 100.0
+      }
+    },
+    "IsHTTPS": {
+      "phishing": {
+        "mean": 0.4922383476150379,
+        "median": 0.0,
+        "std": 0.4999422294387192,
+        "min": 0.0,
+        "q05": 0.0,
+        "q25": 0.0,
+        "q75": 1.0,
+        "q95": 1.0,
+        "max": 1.0
+      },
+      "legitimate": {
+        "mean": 1.0,
+        "median": 1.0,
+        "std": 0.0,
+        "min": 1.0,
+        "q05": 1.0,
+        "q25": 1.0,
+        "q75": 1.0,
+        "q95": 1.0,
+        "max": 1.0
+      }
+    },
+    "LineOfCode": {
+      "phishing": {
+        "mean": 65.73046708603695,
+        "median": 12.0,
+        "std": 195.9180653731537,
+        "min": 2.0,
+        "q05": 2.0,
+        "q25": 2.0,
+        "q75": 90.0,
+        "q95": 271.0,
+        "max": 29687.0
+      },
+      "legitimate": {
+        "mean": 1947.4916796440489,
+        "median": 1105.0,
+        "std": 4348.195220241627,
+        "min": 102.0,
+        "q05": 265.0,
+        "q25": 613.0,
+        "q75": 2088.0,
+        "q95": 6071.549999999988,
+        "max": 442666.0
+      }
+    },
+    "NoOfSubDomain": {
+      "phishing": {
+        "mean": 1.168893952152162,
+        "median": 1.0,
+        "std": 0.7908796611814071,
+        "min": 0.0,
+        "q05": 0.0,
+        "q25": 1.0,
+        "q75": 1.0,
+        "q95": 3.0,
+        "max": 10.0
+      },
+      "legitimate": {
+        "mean": 1.1616611049314052,
+        "median": 1.0,
+        "std": 0.40407592606077336,
+        "min": 1.0,
+        "q05": 1.0,
+        "q25": 1.0,
+        "q75": 1.0,
+        "q95": 2.0,
+        "max": 4.0
+      }
+    }
+  },
+  "stump_diagnostics": [
+    {
+      "feature": "URLSimilarityIndex",
+      "threshold": 98.50222396850586,
+      "validation": {
+        "accuracy": 0.9962679182334813,
+        "phishing_precision": 1.0,
+        "phishing_recall": 0.9912825254259675,
+        "phishing_f1": 0.9956221809498541
+      },
+      "test": {
+        "accuracy": 0.9966355668645746,
+        "phishing_precision": 1.0,
+        "phishing_recall": 0.9921410645885617,
+        "phishing_f1": 0.9960550306646776
+      }
+    },
+    {
+      "feature": "IsHTTPS",
+      "threshold": 0.5,
+      "validation": {
+        "accuracy": 0.789561480392434,
+        "phishing_precision": 1.0,
+        "phishing_recall": 0.5084533086778497,
+        "phishing_f1": 0.6741386103935905
+      },
+      "test": {
+        "accuracy": 0.791574780887758,
+        "phishing_precision": 1.0,
+        "phishing_recall": 0.5131422533350944,
+        "phishing_f1": 0.6782472067039106
+      }
+    },
+    {
+      "feature": "LineOfCode",
+      "threshold": 202.5,
+      "validation": {
+        "accuracy": 0.9564307727105658,
+        "phishing_precision": 0.9695505074915418,
+        "phishing_recall": 0.9273543785497292,
+        "phishing_f1": 0.9479831223628692
+      },
+      "test": {
+        "accuracy": 0.9542267458297993,
+        "phishing_precision": 0.9678914953982424,
+        "phishing_recall": 0.9237220974772157,
+        "phishing_f1": 0.945291116142331
+      }
+    },
+    {
+      "feature": "NoOfSubDomain",
+      "threshold": 0.5,
+      "validation": {
+        "accuracy": 0.6325595860782041,
+        "phishing_precision": 1.0,
+        "phishing_recall": 0.14172500330207372,
+        "phishing_f1": 0.24826469227209624
+      },
+      "test": {
+        "accuracy": 0.6303081707661861,
+        "phishing_precision": 1.0,
+        "phishing_recall": 0.13644168537841764,
+        "phishing_f1": 0.2401208740120874
+      }
+    }
+  ],
+  "safety_statement": "Analysis used local feature matrices only; no URL was contacted.",
+  "interpretation": "The perfect Tier A separation is primarily driven by `URLSimilarityIndex`, a URL-oriented feature classified as reference-dependent or definition-dependent rather than directly deployable. The fitted tree also uses `LineOfCode`, a webpage/content-derived feature, plus `IsHTTPS` and `NoOfSubDomain`, which are URL-text features. This supports a cautious interpretation: the random-split Tier A benchmark contains extremely discriminative supplied features, including at least one feature unavailable to a raw-URL-only deployment setting. This is not by itself proof of data leakage."
+}
